@@ -2,15 +2,17 @@
   <head>
     <title>Flask Intro - login page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/leaderboard.css') }}" />
   </head>
   <body>
     <div class="container">
-      <h1>Leaderboard</h1>
-      <h2> {{name}} <h2>
-      <br>
-      <div id="bull"></div>
-      <div id="shit"></div>
+        <div id="leaderboard">
+          <h1>Leaderboard</h1><br>
+          <div id="bull"></div><br>
+          <br>
+          <div id="shit"></div>
+      </div>
+      <div id="filler"></div>
     </div>
   </body>
   <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
@@ -38,11 +40,11 @@
       for (var i = 0; i < Math.min(20, users.length); i ++) {
         if (users[i]["name"] == name) {
           score = users[i]["score"]
-          document.getElementById("bull").innerHTML += "<p>" + (i+1).toString() +
-          ": you " + score.toString() + "</p>";
+          document.getElementById("bull").innerHTML += "<h2>" + (i+1).toString() +
+          ": {{name}} <span>" + score.toString() + "</span></h2>";
         };
         document.getElementById("shit").innerHTML +=
-        "<p>" + (i+1).toString() + ": " + users[i]["name"] + " " + users[i]["score"].toString() + "</p>";
+        "<p>" + (i+1).toString() + ": " + users[i]["name"] + " <span>" + users[i]["score"].toString() + "</span></p>";
       };
 
     });

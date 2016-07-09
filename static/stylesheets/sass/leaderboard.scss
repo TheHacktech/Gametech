@@ -1,0 +1,66 @@
+/* imports */
+@import 'mixins';
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+
+/* variables */
+$title-font: 'Roboto Condensed', sans-serif;
+$body-font: 'Roboto', sans-serif;
+$rosegold: #e5cace;
+$lighter: #f1e2e4;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $title-font;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: $rosegold;
+}
+
+p, div {
+  font-family: $title-font;
+}
+
+.container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  -webkit-flex-flow: row nowrap;
+  flex: 1;
+  // align-items: center;
+  justify-content: center;
+}
+
+#leaderboard {
+    flex: 1 auto;
+    margin: 40px;
+    background-color: $lighter;
+    padding: 40px 20px 20px 0px;
+    color: #fff;
+
+    h1 {
+        font-family: $title-font;
+        @include font-size(40px);
+        text-transform:  uppercase;
+    }
+
+    p span {
+        float: right;
+    }
+
+}
+
+
+#filler {
+    flex: 9 auto;
+    background-color: $rosegold;
+}

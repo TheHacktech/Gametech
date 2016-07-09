@@ -1,0 +1,54 @@
+/* imports */
+/* taken from http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ */
+/* set rem font size with pixel fallback */
+/* breakpoints */
+/* animations and keyframes */
+/* transitions */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+/* variables */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Condensed", sans-serif; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #e5cace; }
+
+p, div {
+  font-family: "Roboto Condensed", sans-serif; }
+
+.container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  flex: 1;
+  justify-content: center; }
+
+#leaderboard {
+  flex: 1 auto;
+  margin: 40px;
+  background-color: #f1e2e4;
+  padding: 40px 20px 20px 0px;
+  color: #fff; }
+  #leaderboard h1 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 40px;
+    font-size: 2.5rem;
+    text-transform: uppercase; }
+  #leaderboard p span {
+    float: right; }
+
+#filler {
+  flex: 9 auto;
+  background-color: #e5cace; }
+
+/*# sourceMappingURL=leaderboard.css.map */
