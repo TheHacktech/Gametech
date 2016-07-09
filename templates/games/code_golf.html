@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Code Golf</title>
+<style type="text/css" media="screen">
+    #editor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+</head>
+<body>
+<div id="editor">{{code}}</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../../static/javascript/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/iplastic");
+    editor.getSession().setMode("ace/mode/python");
+    editor.getSession().setUseWrapMode(true);
+
+    editor.commands.addCommand({
+    name: 'myCommand',
+    bindKey: {win: 'Ctrl-K',  mac: 'Command-K'},
+    exec: function(editor) {
+      $.ajax({
+        url: "/api/code_golf" + editor.getValue(),
+        context: document.body,
+        success: function(data){
+          alert(data);
+        }
+      });
+    },
+    readOnly: true
+});
+</script>
+</body>
+</html>
