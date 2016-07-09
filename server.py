@@ -29,6 +29,11 @@ def hello(name=None):
         name = "Chenchenchenchenchen"
     return render_template('hello.html', name=name)
 
+@app.route('/play/parrot_game')
+def parrot_game(username=None):
+    if username is None:
+        redirect(url_for('login'))
+    return "SQUAWK"
 
 @app.route('/log', methods=['GET', 'POST'])
 def login():
