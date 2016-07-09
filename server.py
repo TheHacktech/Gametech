@@ -18,6 +18,11 @@ def login():
         # show_the_login_form()
         return "GIMME YOUR LOGIN INFO"
 
+@app.route('/games')
+def game(name=None):
+    if name is None:
+        name = "gamesgamesgames"
+    return render_template('games.html', name=name)
 
 @app.route('/hello')
 def hello(name=None):
