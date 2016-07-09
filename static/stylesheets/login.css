@@ -5,6 +5,93 @@
 /* animations and keyframes */
 /* transitions */
 @import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 /* variables */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #e5cace; }
+
+p, div {
+  font-family: "Roboto", sans-serif; }
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+  align-items: center;
+  justify-content: center; }
+
+#title {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
+  color: #fff;
+  font-size: 70px;
+  font-size: 4.375rem;
+  text-transform: uppercase; }
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  color: #333;
+  background-color: #f1e2e4;
+  padding: 20px;
+  font-size: 0;
+  width: 300px; }
+
+input {
+  font-size: 18px;
+  font-size: 1.125rem;
+  outline: 0;
+  border: 0;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 1.1; }
+
+input[type=text] {
+  width: 100%;
+  background-color: inherit;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 10px; }
+
+input[type=password] {
+  width: 100%;
+  background-color: inherit;
+  color: #fff;
+  margin-top: 10px; }
+
+input[type=submit] {
+  background-color: #fff;
+  width: 100%;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
+  letter-spacing: 1.4;
+  text-transform: uppercase;
+  color: #e5cace;
+  padding: 4px 0px;
+  margin-top: 20px; }
+
+input::-webkit-input-placeholder {
+  color: #fff !important; }
+
+input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff !important; }
+
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff !important; }
+
+input:-ms-input-placeholder {
+  color: #fff  !important; }
 
 /*# sourceMappingURL=login.css.map */

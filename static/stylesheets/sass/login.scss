@@ -1,9 +1,108 @@
 /* imports */
 @import 'mixins';
 @import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 
 /* variables */
+$title-font: 'Roboto Condensed', sans-serif;
 $body-font: 'Roboto', sans-serif;
-$accent1: #72376f;
-$accent2: #481e46;
+$rosegold: #e5cace;
+$lighter: #f1e2e4;
 $accent3: #2b132b;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $body-font;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: $rosegold;
+}
+
+p, div {
+  font-family: $body-font;
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+#title {
+    font-family: $title-font;
+    font-weight: bold;
+    color: #fff;
+    @include font-size(70px);
+    text-transform: uppercase;
+}
+
+form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    color: #333;
+    background-color: $lighter;
+    padding: 20px;
+    font-size:0;
+    width: 300px;
+}
+
+input {
+    @include font-size(18px);
+    outline: 0;
+    border: 0;
+    font-family: $title-font;
+    letter-spacing: 1.1;
+}
+
+input[type=text] {
+    width: 100%;
+    background-color: inherit;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 10px;
+}
+
+input[type=password] {
+    width: 100%;
+    background-color: inherit;
+    color: #fff;
+    margin-top: 10px;
+}
+
+input[type=submit] {
+    background-color: #fff;
+    width: 100%;
+    font-family: $title-font;
+    font-weight: bold;
+    letter-spacing: 1.4;
+    text-transform: uppercase;
+    color: $rosegold;
+    padding: 4px 0px;
+    margin-top: 20px;
+}
+
+input::-webkit-input-placeholder {
+color: #fff !important;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+color: #fff !important;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+color: #fff !important;
+}
+
+input:-ms-input-placeholder {
+color: #fff  !important;
+}
