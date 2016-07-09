@@ -10,7 +10,6 @@ def index():
 
 
 
-
 @app.route('/games')
 def game():
     if name is None:
@@ -20,7 +19,14 @@ def game():
 @app.route('/games/<gamename>')
 def show_user_profile(gamename):
     # show the user profile for that user
-    return 'Game %s' % gamename
+    # return 'Game %s' % gamename
+    return render_template(str(gamename) + '.html')
+
+@app.route('/games/submit')
+def submit(gamename):
+    # show the user profile for that user
+    # return 'Game %s' % gamename
+    return "you made it"
 
 
 @app.route('/hello')
