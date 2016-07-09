@@ -1,6 +1,3 @@
-from flask import Flask
-from flask import request
-from flask import render_template
 from flask import Flask, flash, redirect, render_template, request, session, abort, url_for
 
 
