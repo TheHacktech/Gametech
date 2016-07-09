@@ -11,20 +11,11 @@ app.config['DEBUG'] = True
 def index():
     return 'Index Page'
 
-
-
-
 @app.route('/games')
 def game():
     if name is None:
         name = "gamesgamesgames"
     return render_template('games.html')
-
-@app.route('/games/<gamename>')
-def show_user_profile(gamename):
-    # show the user profile for that user
-    return 'Game %s' % gamename
-
 
 @app.route('/hello')
 def hello(name=None):
@@ -32,11 +23,12 @@ def hello(name=None):
         name = "Chenchenchenchenchen"
     return render_template('hello.html', name=name)
 
-@app.route('/play/parrot_game')
-def parrot_game(username=None):
-    if username is None:
-        redirect(url_for('login'))
-    return "SQUAWK"
+@app.route('/play/<gamename>')
+def play_game(gamename, username=None):
+    username = request.args.get('username')
+    if gamename is None or username is None:
+        return redirect(url_for('login'))
+    return render_template('games/%s.html' % gamename)
 
 @app.route('/log', methods=['GET', 'POST'])
 def login():
