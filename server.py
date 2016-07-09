@@ -19,10 +19,16 @@ def login():
         return "GIMME YOUR LOGIN INFO"
 
 @app.route('/games')
-def game(name=None):
+def game():
     if name is None:
         name = "gamesgamesgames"
-    return render_template('games.html', name=name)
+    return render_template('games.html')
+
+@app.route('/games/<gamename>')
+def show_user_profile(gamename):
+    # show the user profile for that user
+    return 'Game %s' % gamename
+
 
 @app.route('/hello')
 def hello(name=None):
