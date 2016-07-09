@@ -3,21 +3,25 @@
     <title>Flask Intro - login page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/login.css') }}" />
+    <script src="static/js/particles.js"></script>
+    <script src="static/js/app.js"></script>
   </head>
   <body>
-    <div class="container">
-      <h1 id="title">Gametech</h1>
-      <br>
-      <form action="" method="post">
-        <input id="username" type="text" placeholder="Username" name="username" autocomplete="off" value="{{
-          request.form.username }}"> <br>
-         <input id="password" type="password" placeholder="Password" name="password" value="{{
-          request.form.password }}"> <br>
-        <input id="loginbutton" type="submit" value="Login">
-      </form>
-      {% if error %}
-        <p class="error"><strong>Error:</strong> {{ error }}
-      {% endif %}
-    </div>
+      <div id="particles-js">
+              </div>
+        <div class="container">
+          <h1 id="title"><a href="/">Gametech</a></h1>
+          <br>
+          <form action="" method="post">
+            <input id="username" type="text" placeholder="Username" name="username" autocomplete="off" value="{{
+              request.form.username }}"> <br>
+             <input id="password" type="password" placeholder="Password" name="password" value="{{
+              request.form.password }}"> <br>
+            <input id="loginbutton" type="submit" value="Login">
+          </form>
+          {% if error %}
+            <p class="error"><strong>Error:</strong> {{ error }}
+          {% endif %}
+        </div>
   </body>
 </html>

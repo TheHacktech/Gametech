@@ -37,12 +37,14 @@ p, div {
   justify-content: center;
 }
 
-#title {
+#title a {
     font-family: $title-font;
     font-weight: bold;
     color: #fff;
     @include font-size(70px);
     text-transform: uppercase;
+    text-decoration: none;
+    z-index: 100;
 }
 
 form {
@@ -54,6 +56,7 @@ form {
     padding: 20px;
     font-size:0;
     width: 300px;
+    z-index: 1;
 }
 
 input {
@@ -105,4 +108,20 @@ color: #fff !important;
 
 input:-ms-input-placeholder {
 color: #fff  !important;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    right: 0;
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.error {
+    margin-top: 20px;
+    font-family: $title-font;
 }
