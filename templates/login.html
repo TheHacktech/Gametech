@@ -3,8 +3,8 @@
     <title>Flask Intro - login page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/login.css') }}" />
-    <script src="static/js/particles.js"></script>
-    <script src="static/js/app.js"></script>
+    <script src="{{url_for('static', filename='javascript/particles.js')}}"></script>
+    <script src="{{url_for('static', filename='javascript/app.js')}}"></script>
   </head>
   <body>
       <div id="particles-js">
