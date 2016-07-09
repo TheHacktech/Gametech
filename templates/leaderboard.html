@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Flask Intro - login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Leaderboard</h1>
+      <h2> {{name}} <h2>
+      <br>
+      <div id="bull"></div>
+      <div id="shit"></div>
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyDq5GXyq96eg0FsUOfVM4XhH1cBS57m4C8",
+      authDomain: "minigames-15a0f.firebaseapp.com",
+      databaseURL: "https://minigames-15a0f.firebaseio.com",
+      storageBucket: "minigames-15a0f.appspot.com",
+    };
+    firebase.initializeApp(config);
+    firebase.database().ref("/").once("value").then(function(snapshot) {
+      var name = "{{name}}";
+      var snap = snapshot.val();
+      var score = snap.name;
+      var sortable = [];
+      for (var user in snap)
+            sortable.push([user, snap[user]])
+      sortable.sort(
+          function(a, b) {
+              return a[1] - b[1]
+          }
+      );
+      var users = sortable[0][1];
+      for (var i = 0; i < Math.min(20, users.length); i ++) {
+        if (users[i]["name"] == name) {
+          score = users[i]["score"]
+          document.getElementById("bull").innerHTML += "<p>" + (i+1).toString() +
+          ": you " + score.toString() + "</p>";
+        };
+        document.getElementById("shit").innerHTML +=
+        "<p>" + (i+1).toString() + ": " + users[i]["name"] + " " + users[i]["score"].toString() + "</p>";
+      };
+
+    });
+  </script>
+</html>
