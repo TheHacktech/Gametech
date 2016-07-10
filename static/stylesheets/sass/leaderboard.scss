@@ -35,7 +35,6 @@ p, div {
     display: -webkit-flex;
     display: flex;
   -webkit-flex-flow: row nowrap;
-  -moz-flex-flow: row nowrap;
   flex: 1;
   max-height: 100%;
   height: 100%;
@@ -107,11 +106,10 @@ p, div {
     display: -webkit-flex;
     display: flex;
   -webkit-flex-flow: row wrap;
-    -moz-flex-flow: row nowrap;
 }
 
 .tile {
-    -moz-flex: 1 0 25%;
+    flex: 1 0 25%;
     margin: 20px;
     perspective: 1000px;
     display: -webkit-box;
