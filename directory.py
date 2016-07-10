@@ -40,3 +40,16 @@ CODE_GOLF_ANSWERS_LIST = {
     "1" : {"inputs": [0, 1, 2, 10], "outputs": [0, 10, 20, 100]},
     "2" : {"inputs": [0, 1, 2, 10], "outputs": [0, 5, 10, 50]}
 }
+
+USER_TO_PASS_LIST = {
+    "Robert" : "password",
+    "yoonko" : "password",
+    "advith" : "password",
+    "Chenchenchen" : "password",
+    "andoru" : "password",
+    "Robert Eng Jr." : "password",
+    "kbbq" : "password",
+    "Billy Bob" : "password",
+    "God" : "password",
+    "Fred" : "password"
+}
