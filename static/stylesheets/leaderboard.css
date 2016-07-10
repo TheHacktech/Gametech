@@ -88,7 +88,7 @@ p, div {
   -webkit-flex-flow: row wrap; }
 
 .tile {
-  flex: 1 0 35%;
+  flex: 1 0 33%;
   margin: 20px;
   perspective: 1000px;
   display: -webkit-box;
@@ -173,7 +173,30 @@ p, div {
       text-decoration: none;
       text-transform: uppercase;
       padding: 10px;
-      color: #e5cace; }
+      color: #e5cace;
+      -webkit-transition: color 0.8s ease;
+      -moz-transition: color 0.8s ease;
+      -ms-transition: color 0.8s ease;
+      -o-transition: color 0.8s ease;
+      transition: color 0.8s ease;
+      -webkit-transition: background-color 0.8s ease;
+      -moz-transition: background-color 0.8s ease;
+      -ms-transition: background-color 0.8s ease;
+      -o-transition: background-color 0.8s ease;
+      transition: background-color 0.8s ease; }
+    .back .info a:hover {
+      -webkit-transition: color 0.8s ease;
+      -moz-transition: color 0.8s ease;
+      -ms-transition: color 0.8s ease;
+      -o-transition: color 0.8s ease;
+      transition: color 0.8s ease;
+      -webkit-transition: background-color 0.8s ease;
+      -moz-transition: background-color 0.8s ease;
+      -ms-transition: background-color 0.8s ease;
+      -o-transition: background-color 0.8s ease;
+      transition: background-color 0.8s ease;
+      color: #fff;
+      background-color: #e5cace; }
 
 .mCS-light.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   background-color: #fff; }

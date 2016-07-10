@@ -93,6 +93,18 @@ input[type=submit] {
     margin-top: 20px;
 }
 
+input[type=submit] {
+    @include transition(color .8s ease);
+    @include transition(background-color .8s ease);
+}
+
+input[type=submit]:hover {
+    @include transition(color .8s ease);
+    @include transition(background-color .8s ease);
+    color: #fff;
+    background-color:$rosegold;
+}
+
 input::-webkit-input-placeholder {
 color: #fff !important;
 }
