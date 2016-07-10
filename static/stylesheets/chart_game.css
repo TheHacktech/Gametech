@@ -102,7 +102,7 @@ rect:hover {
   border-bottom: 1px solid #e5cace; }
 
 .legend tr:last-child {
-  border-top: 1px solid #e5cace; }
+  border: none; }
 
 .x.axis path {
   display: none; }
