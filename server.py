@@ -14,7 +14,7 @@ def leaderboard(name=None):
     return render_template('leaderboard.html',name=name)
 
 @app.route('/games')
-def game():
+def game(name=None):
     if name is None:
         name = "gamesgamesgames"
     return render_template('games.html')
