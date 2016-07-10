@@ -129,6 +129,19 @@ input[type=reset]:hover {
     background-color:$rosegold;
 }
 
+#newpassword {
+    margin-top: 10px;
+    border: none;
+}
+
+#createaccount {
+  display: none;
+}
+
+#newpassword {
+  display: none;
+}
+
 input::-webkit-input-placeholder {
 color: #fff !important;
 }
