@@ -109,8 +109,15 @@ function create_user(username) {
   firebase.database().ref("users").once("value").then(function(snapshot) {
     var users = snapshot.val();
     total_users = users.length;
-  };
-  firebase.database().ref('users/').update({
-   name: username,
- });
+    firebase.database().ref('users/' + (total_users).toString() + '/').update({
+     name: username,
+     chameleon_score: 0,
+     code_golf1_score: 0,
+     code_golf2_score: 0,
+     score: 0,
+     teamname: "NewUser",
+     trivia_question: 1,
+     trivia_score: 0
+   });
+ }).then(window.open('http://127.0.0.1:5000/api/movepaths?username=' + username,'_self',false));
 }

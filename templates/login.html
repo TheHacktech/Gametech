@@ -47,7 +47,14 @@
       };
 
       function create() {
-        create_user(document.getElementById('username').value);
+        var newUsername = document.getElementById('username').value;
+        var newPassword = document.getElementById('newpassword').value;
+        document.getElementById('loginbutton').style.display = "block";
+        document.getElementById('createaccount').style.display = "none";
+        document.getElementById('newpassword').style.display = "none";
+        document.getElementById('password').style.display = "block";
+        create_user(newUsername);
+
       };
     </script>
   </body>

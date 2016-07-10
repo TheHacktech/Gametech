@@ -38,6 +38,12 @@ def golf():
         return json.dumps(directory.CODE_GOLF_QUESTIONS_LIST)
     return "no"
 
+@app.route('/api/movepaths')
+def save_user():
+        username = request.args["username"]
+        return redirect(url_for('leaderboard', name=username))
+
+
 @app.route('/api/passwordgen', methods=['GET'])
 def password_generation():
     if request.method == 'GET':
