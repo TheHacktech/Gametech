@@ -36,7 +36,7 @@
 </html>
 <script>
 function submit_score() {
-    post_score("chameleon_game", "{{username}}", score)
+    post_score("chameleon", "{{username}}", score)
     if (score > 0) {
         document.getElementById("confirm-submit").innerHTML = "Congrats, you get your life back!!";
     }

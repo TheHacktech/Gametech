@@ -64,17 +64,28 @@ function increment_question(username) {
 function post_score(gameid, username, score) {
   start_firebase();
   firebase.database().ref("users").once("value").then(function(snapshot) {
-    var curr_score = 0;
+    var curr_game_score = 0;
+    var curr_total_score = 0;
+    gameid += "_score";
     var users = snapshot.val();
     var user_id = -1;
     for (var i = 0; i < users.length; i++) {
       if (users[i]["name"] == username) {
         user_id = i;
-        curr_score = users[i]["score"];
+        curr_game_score = users[i][gameid];
+        curr_total_score = users[i]["score"];
       }
-    }
+    };
+    var updateObj = {};
+    updateObj[gameid] = Math.max(curr_game_score, score);
+
+    console.log(curr_game_score);
+
+
     firebase.database().ref("users/"+ user_id.toString() + "/").update(
-      {"score": curr_score + score});
+      {"score": curr_total_score + Math.max(Math.max(curr_game_score, score) - Math.min(curr_game_score, score), 0)});
+    firebase.database().ref("users/"+ user_id.toString() + "/").update(
+      updateObj);
 
   });
 }
