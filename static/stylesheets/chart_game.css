@@ -61,7 +61,8 @@ p, div {
     text-transform: uppercase;
     margin-bottom: 30px; }
 
-#game {
+#dashboard {
+  width: 100%;
   padding: 50px;
   flex: 9 auto;
   background-color: #f1e2e4;
@@ -71,47 +72,10 @@ p, div {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-flow: column nowrap;
+  -webkit-flex-flow: row wrap;
   align-items: center;
-  justify-content: center; }
-
-.game-window {
-  text-align: center;
-  min-width: 70%;
-  width: 70%;
-  max-width: 70%;
-  min-height: 70%;
-  height: 70%;
-  max-height: 70%; }
-
-#chameleon-game {
-  flex: 8 auto;
-  color: #fff;
-  border: 20px solid #fff;
-  padding: 80px;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: #32CD32;
-  -webkit-transition: background 0.5s linear;
-  -moz-transition: background 0.5s linear;
-  -ms-transition: background 0.5s linear;
-  -o-transition: background 0.5s linear;
-  transition: background 0.5s linear; }
-
-.submit-button {
-  margin-top: 30px;
-  padding: 10px 40px;
-  text-transform: uppercase;
-  color: #e5cace;
-  letter-spacing: 1.1;
-  border: none;
-  outline: none;
-  background-color: #fff; }
-
-#confirm-submit {
-  margin-top: 30px;
-  display: none; }
+  justify-content: center;
+  text-align: center; }
 
 .infocard {
   background-color: #fff;
@@ -124,31 +88,59 @@ p, div {
   .infocard p {
     margin-top: 10px; }
 
-.submit-button {
-  -webkit-transition: color 0.8s ease;
-  -moz-transition: color 0.8s ease;
-  -ms-transition: color 0.8s ease;
-  -o-transition: color 0.8s ease;
-  transition: color 0.8s ease;
-  -webkit-transition: background-color 0.8s ease;
-  -moz-transition: background-color 0.8s ease;
-  -ms-transition: background-color 0.8s ease;
-  -o-transition: background-color 0.8s ease;
-  transition: background-color 0.8s ease; }
+path {
+  stroke: #fff; }
 
-.submit-button:hover {
-  -webkit-transition: color 0.8s ease;
-  -moz-transition: color 0.8s ease;
-  -ms-transition: color 0.8s ease;
-  -o-transition: color 0.8s ease;
-  transition: color 0.8s ease;
-  -webkit-transition: background-color 0.8s ease;
-  -moz-transition: background-color 0.8s ease;
-  -ms-transition: background-color 0.8s ease;
-  -o-transition: background-color 0.8s ease;
-  transition: background-color 0.8s ease;
-  color: #fff;
-  background-color: #e5cace; }
+path:hover {
+  opacity: 0.9; }
+
+rect:hover {
+  fill: blue; }
+
+.axis {
+  font: 10px "Roboto Condensed", sans-serif; }
+
+.legend tr {
+  border-bottom: 1px solid #e5cace;
+  padding: 3px; }
+
+.legend tr:last-child {
+  border: none; }
+
+.x.axis path {
+  display: none; }
+
+.legend {
+  margin-bottom: 0px;
+  margin-right: 50px;
+  display: inline-block;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  background-color: #fff;
+  color: #e5cace;
+  padding: 15px; }
+
+.legend td {
+  padding: 8px 4px;
+  vertical-align: bottom; }
+
+.legendFreq, .legendPerc {
+  align: right;
+  width: 50px; }
+
+svg {
+  margin: auto auto; }
+
+#bargraph {
+  bottom: 0px;
+  display: inline-block;
+  margin-left: 70px; }
+
+#pichart {
+  position: absolute;
+  margin-top: 250px;
+  margin-left: -360px;
+  display: inline-block; }
 
 #back {
   text-align: center;
@@ -184,4 +176,4 @@ p, div {
     color: #fff;
     background-color: #e5cace; }
 
-/*# sourceMappingURL=chameleon_game.css.map */
+/*# sourceMappingURL=chart_game.css.map */

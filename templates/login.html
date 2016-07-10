@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Flask Intro - login page</title>
+    <title>Gametech - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/login.css') }}" />
     <script src="{{url_for('static', filename='javascript/particles.js')}}"></script>
@@ -17,11 +17,75 @@
               request.form.username }}"> <br>
              <input id="password" type="password" placeholder="Password" name="password" value="{{
               request.form.password }}"> <br>
+             <input id="newpassword" type="text" placeholder="" name="newpassword" value="">
+             <br>
             <input id="loginbutton" type="submit" value="Login">
+            <input id="registerbutton" onclick="register()" type="reset" value="Register">
+            <input id="createaccount" onclick="create()" type="reset" value="Create Account">
           </form>
           {% if error %}
             <p class="error"><strong>Error:</strong> {{ error }}
           {% endif %}
         </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='javascript/firebase.js')}}"></script>
+    <script src="{{url_for('static', filename='javascript/common.js')}}"></script>
+    <script>
+      function register() {
+        $.ajax({
+          type: "GET",
+          url: "/api/passwordgen",
+          success: function(data){
+            document.getElementById('newpassword').style.display = "block";
+            document.getElementById('newpassword').value = data;
+            document.getElementById('password').style.display = "none";
+            document.getElementById('loginbutton').style.display = "none";
+            document.getElementById('createaccount').style.display = "block";
+            document.getElementById('registerbutton').style.display = "none";
+          }
+        });
+      };
+
+      function create() {
+        var newUsername = document.getElementById('username').value;
+        var newPassword = document.getElementById('newpassword').value;
+        document.getElementById('loginbutton').style.display = "block";
+        document.getElementById('createaccount').style.display = "none";
+        document.getElementById('newpassword').style.display = "none";
+        document.getElementById('password').style.display = "block";
+        create_user(newUsername);
+      };
+
+      function create_user(username) {
+        console.log("creating user")
+        start_firebase();
+        var total_users = 0;
+        firebase.database().ref("users").once("value").then(function(snapshot) {
+          var users = snapshot.val();
+          return users.length;
+        }).then(function(total_users) {
+          console.log(total_users);
+          firebase.database().ref('users/' + (total_users).toString() + '/').update({
+            name: username,
+            chameleon_score: 0,
+            code_golf1_score: 0,
+            code_golf2_score: 0,
+            score: 0,
+            teamname: "NewUser",
+            trivia_question: 1,
+            trivia_score: 0
+          });
+          return username;
+        }).then(function(some_user){
+          console.log("changed");
+          var hostname = window.location.hostname;
+          var port = window.location.port;
+          if (port != "") {
+            hostname += ":" + port
+          }
+          window.open('http://'+ hostname +'/api/movepaths?username=' + some_user,'_self');
+        });
+      }
+    </script>
   </body>
 </html>

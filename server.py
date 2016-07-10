@@ -1,25 +1,15 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, url_for, json
 import directory
 import re
+import random
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-
-@app.route('/')
-def index():
-    return 'Index Page'
 
 @app.route('/leaderboard')
 def leaderboard(name=None):
     name = request.args["name"]
     return render_template('leaderboard.html', name=name, game_name=directory.GAME_NAME_LIST, game_desc=directory.GAME_DESCRIPTION_LIST, game_link=directory.GAME_LINK_LIST)
-'''
-@app.route('/games')
-def game(name=None):
-    if name is None:
-        name = "gamesgamesgames"
-    return render_template('games.html')
-'''
 
 def check(code, inp, outp):
     try:
@@ -48,6 +38,22 @@ def golf():
         return json.dumps(directory.CODE_GOLF_QUESTIONS_LIST)
     return "no"
 
+@app.route('/api/movepaths')
+def save_user():
+        username = request.args["username"]
+        return redirect(url_for('leaderboard', name=username))
+
+
+@app.route('/api/passwordgen', methods=['GET'])
+def password_generation():
+    if request.method == 'GET':
+        pwd = ""
+        pwd += random.choice(directory.COMMON_WORD_LIST_NOUN)
+        pwd += random.choice(directory.COMMON_WORD_LIST_VERB)
+        pwd += random.choice(directory.COMMON_WORD_LIST_NOUN)
+        pwd += random.choice(directory.COMMON_NUMBER_LIST)
+        return pwd
+
 @app.route('/api/trivia_game', methods=['GET', 'POST'])
 def trivia():
     if request.method == 'GET':
@@ -75,6 +81,7 @@ def play_game(gamename, username=None):
         return redirect(url_for('login'))
     return render_template('games/%s.html' % gamename, username=username)
 
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None

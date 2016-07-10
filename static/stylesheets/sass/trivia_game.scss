@@ -13,7 +13,7 @@ $lighter: #f1e2e4;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  // font-family: $title-font;
+  font-family: $title-font;
 }
 
 html, body, .viewport{
@@ -32,7 +32,7 @@ body {
 }
 
 p, div {
-  // font-family: $title-font;
+  font-family: $title-font;
 }
 
 .container {
@@ -49,7 +49,6 @@ p, div {
 }
 
 #instructions {
-    font-family: $title-font;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -85,42 +84,14 @@ p, div {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-  -webkit-flex-flow: column nowrap;
+  -webkit-flex-flow: column wrap;
   align-items: center;
   justify-content: center;
-}
-
-.game-window {
   text-align: center;
-  min-width: 70%;
-  width: 70%;
-  max-width: 70%;
-  min-height: 70%;
-  height: 70%;
-  max-height: 70%;
-}
-
-#editor{
-    font-family: monospace;
-    flex: 8 auto;
-    color: #333;
-    border: 20px solid #fff;
-    padding: 80px;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: left;
-  background-color: #999;
-  -webkit-transition: background 0.5s linear;
-  -moz-transition: background 0.5s linear;
-  -ms-transition: background 0.5s linear;
-  -o-transition: background 0.5s linear;
-  transition: background 0.5s linear;
 }
 
 .submit-button {
-    font-family: $title-font;
-    margin-top: 80px;
+    margin-top: 30px;
     padding: 10px 40px;
     text-transform: uppercase;
     color: $rosegold;
@@ -130,8 +101,37 @@ p, div {
     background-color: #fff;
 }
 #confirm-submit {
-  margin-top: 30px;
+  margin-bottom: 30px;
   display: none;
+}
+
+#question {
+    color: #fff;
+    font-size: 50px;
+    text-align: center;;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #fff;
+    text-transform: uppercase;
+}
+
+#answer {
+    margin-top: 20px;
+    font-size: 26px;
+}
+
+#next {
+    margin-top: 60px;
+    font-size: 20px;
+}
+
+input[type=text] {
+    width: 100%;
+    background-color: inherit;
+    color: #fff;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 26px;
 }
 
 .infocard {
@@ -149,82 +149,41 @@ p, div {
         margin-top: 10px;
     }
 }
-
-#challenge-text {
-    font-family: $title-font;
-	position: relative;
-	display: inline-block;
-	width: 100%;
-	margin-bottom: 15px;
-}
-
-select:active, select:hover {
-    outline: none;
-    border: none;
-}
-
-#challenge-text select {
-    font-family: $title-font;
-	display: inline-block;
-	width: 100%;
-	padding: 10px 15px;
-	cursor: pointer;
-	color: $rosegold;
-	border: 0;
-	border-radius: 0;
-	outline: 0;
-	background: #fff;
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-}
-
-#challenge-text select::-ms-expand {
-	display: none;
-}
-
-#challenge-text select:hover,
-#challenge-text select:focus {
-	color: $rosegold;
-	background: #fff;
-}
-
-#challenge-text select:disabled {
-	pointer-events: none;
-	opacity: .5;
-}
-
-.select_arrow {
-	position: absolute;
-	top: -15px;
-	right: 0px;
-	width: 0;
-	height: 0;
-	pointer-events: none;
-	border-width: 8px 5px 0 5px;
-	border-style: solid;
-	border-color: $rosegold transparent transparent transparent;
-}
-#challenge-text select:hover ~ .select_arrow,
-#challenge-text select:focus ~ .select_arrow {
-	border-top-color: #fff;
-}
-
-#challenge-text select:disabled ~ .select_arrow {
-	border-top-color: #fff;
-}
-
-.submit-button {
+button {
     @include transition(color .8s ease);
     @include transition(background-color .8s ease);
+    background-color: #fff;
+    color: $rosegold;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    letter-spacing: 1.1;
+    text-transform: uppercase;
 }
 
-.submit-button:hover {
+button:hover {
     @include transition(color .8s ease);
     @include transition(background-color .8s ease);
     color: #fff;
     background-color:$rosegold;
 }
+
+input::-webkit-input-placeholder {
+color: #fff !important;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+color: #fff !important;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+color: #fff !important;
+}
+
+input:-ms-input-placeholder {
+color: #fff  !important;
+}
+
 #back {
     text-align: center;
     margin-top: 10px;

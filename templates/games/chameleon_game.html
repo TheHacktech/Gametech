@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Where's the chameleon?</title>
+    <title>Gametech - Play - Chameleon</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/chameleon_game.css') }}" />
   </head>
@@ -19,8 +19,9 @@
             </div>
             <div class="infocard">
                 <h3>How to Exit</h3>
-                <p>Simply close the window!</p>
+                <p>Press the back button below to return to the leaderboard.</p>
             </div>
+                <div id="back"><a href="/leaderboard?name={{username}}">Back</a></div>
         </div>
         <div id="game">
             <div class="game-window">

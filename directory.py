@@ -140,14 +140,12 @@ CODE_GOLF_ANSWERS_LIST = {
 }
 
 USER_TO_PASS_LIST = {
-    "Robert" : "password",
-    "yoonko" : "password",
-    "advith" : "password",
-    "Chenchenchen" : "password",
-    "andoru" : "password",
-    "Robert Eng Jr." : "password",
-    "kbbq" : "password",
-    "Billy Bob" : "password",
-    "God" : "password",
-    "Fred" : "password"
+    "Robert" : "robert",
+    "Advith" : "advith",
+    "Anne"   : "anne",
+    "Chen"   : "chen"
 }
+
+COMMON_WORD_LIST_NOUN = ["dog", "cat", "frog", "pizza", "pie", "bed"]
+COMMON_WORD_LIST_VERB = ["eat", "slap", "hug", "watch"]
+COMMON_NUMBER_LIST = ["1", "2", "3", "4", "5"]

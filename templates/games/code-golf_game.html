@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Code Golf Challenge</title>
+    <title>Gametech - Play - Code Golf</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/code-golf_game.css') }}" />
   </head>
@@ -19,8 +19,9 @@
         </div>
         <div class="infocard">
             <h3>How to Exit</h3>
-            <p>Simply close the window!</p>
+            <p>Press the back button below to return to the leaderboard.</p>
         </div>
+        <div id="back"><a href="/leaderboard?name={{username}}">Back</a></div>
     </div>
     <div id="game">
 <div class="game-window">
@@ -45,10 +46,14 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/iplastic");
 editor.getSession().setMode("ace/mode/python");
 editor.getSession().setUseWrapMode(true);
+editor.setOptions({
+  fontFamily: "monospace",
+  fontSize: "10pt"
+});
 
 $.ajax({
   type: "GET",
-  url: "api/code_golf",
+  url: "/api/code_golf",
   success: function(data) {
     data = JSON.parse(data);
     var dropdownContent = "<select id='qs'>";
