@@ -1,5 +1,5 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, url_for, json
-from directory import *
+import directory
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -42,6 +42,8 @@ def golf():
         outp = [10, 20, 30]
         result, length = check(content, inp, outp)
         return json.dumps({"result": result, "chars": length})
+    elif request.method == 'GET':
+        return json.dumps(directory.CODE_GOLF_QUESTIONS_LIST)
     return "no"
 
 @app.route('/api/trivia_game', methods=['GET', 'POST'])
