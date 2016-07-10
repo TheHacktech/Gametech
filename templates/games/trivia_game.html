@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
 </head>
 
-<body onload="load_question()">
+<body onload="initial_load()">
   <div class="game-window">
     <div id="header">Welcome to Trivia!</div>
     <div id="confirm-submit" class="top"> How'd you do? </div>
@@ -24,7 +24,7 @@
 var q_no = 0;
 var user_id = -1;
 
-function load_question() {
+function initial_load() {
   start_firebase();
   console.log("starting");
   firebase.database().ref("users").once("value").then(function(snapshot) {
@@ -34,21 +34,24 @@ function load_question() {
       if (users[i]["name"] == '{{username}}') {
         user_id = i;
         q_no = users[i]['trivia_question'];
-        $.ajax({
-          type: "GET",
-          url: "/api/trivia_game",
-          data: {
-            "question": q_no
-          },
-          success: function(data) {
-            document.getElementById("question").innerHTML = q_no + ". " + data
-          }
-        }); 
+        load_question(q_no); 
       }
     };
   });
 }
 
+function load_question(q_no) {
+  $.ajax({
+    type: "GET",
+    url: "/api/trivia_game",
+    data: {
+      "question": q_no
+    },
+    success: function(data) {
+      document.getElementById("question").innerHTML = data
+    }
+  }); 
+}
 function next() {
   var guess = document.getElementById('solution').value;
   console.log(guess)
@@ -59,14 +62,18 @@ function next() {
     
     data: {"answer": guess, "question": q_no},
     success: function(data) {
+      document.getElementById("question").innerHTML = "Loading question..."
       data = JSON.parse(data);
       var result_box = document.getElementById("confirm-submit");
       result_box.style.display = "block";
       result_box.innerHTML = data["result"];
-      if (data == "Correct!") {
-        // Increase score
+      if (data["result"] == "Correct!") {
+        increase_score("trivia", user_id, 10);
       }
-      // Increment question number
+      q_no++;
+      firebase.database().ref("users/"+ user_id.toString() + "/").update(
+        {"trivia_question": q_no});
+      load_question(q_no);
     },
   });
 }

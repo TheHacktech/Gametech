@@ -57,7 +57,7 @@ function increment_question(username) {
       }
     };
     firebase.database().ref("users/"+ user_id.toString() + "/").update(
-      {"trivia_question": cur_qid+1});
+      {"trivia_question": cur_qid + 1});
   });
 };
 
@@ -84,6 +84,23 @@ function post_score(gameid, username, score) {
 
     firebase.database().ref("users/"+ user_id.toString() + "/").update(
       {"score": curr_total_score + Math.max(Math.max(curr_game_score, score) - Math.min(curr_game_score, score), 0)});
+    firebase.database().ref("users/"+ user_id.toString() + "/").update(
+      updateObj);
+
+  });
+}
+
+function increase_score(gameid, user_id, score) {
+  start_firebase();
+  firebase.database().ref("users").once("value").then(function(snapshot) {
+    gameid += "_score";
+    var users = snapshot.val();
+    var curr_game_score = users[user_id][gameid];
+    var curr_total_score = users[user_id]["score"];
+    var updateObj = {};
+    updateObj[gameid] = curr_game_score + score;
+    updateObj["score"] = curr_total_score + score;
+
     firebase.database().ref("users/"+ user_id.toString() + "/").update(
       updateObj);
 

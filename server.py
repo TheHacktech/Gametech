@@ -50,13 +50,15 @@ def golf():
 @app.route('/api/trivia_game', methods=['GET', 'POST'])
 def trivia():
     if request.method == 'GET':
-        return directory.TRIVIA_QUESTIONS_LIST.get(\
-            int(request.args.get('question')), "No question found")
+        key = int(request.args.get('question'))
+        if key in directory.TRIVIA_QUESTIONS_LIST:
+            return "%d. %s" % (key, directory.TRIVIA_QUESTIONS_LIST[key])
+        else:
+            return "No questions left! Check back later for more!"
     elif request.method == 'POST':
         answer = request.form["answer"]
         questionNum = int(request.form["question"])
-        print("DEBUG: " + directory.TRIVIA_ANSWERS_LIST[questionNum])
-        print("DEBUG: " + answer)
+
         if (directory.TRIVIA_ANSWERS_LIST[questionNum] == answer):
             return json.dumps({"result": "Correct!"})
         return json.dumps({"result": "Wrong!"})
