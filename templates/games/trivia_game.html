@@ -1,53 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Trivia</title>
-<style type="text/css" media="screen">
-  #header {
-    text-align: center;
-  }
-
-  #question {
-    text-align: center;
-  }
-
-  #answer {
-    text-align: center;
-  }
-
-  #next {
-    text-align: center;
-  }
-
-</style>
+  <title>Trivia Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
 </head>
-<body>
-<div id="header">Welcome to Trivia!</div>
-<div id="question">1. What is resolaeruoy backward</div>
-<div id="answer"> <input id="solution" type="text"></div>
-<button id="next" onclick="next()"> Submit </button>
 
+<body onload="load_question()">
+  <div class="game-window">
+    <div id="header">Welcome to Trivia!</div>
+    <div id="question">1. What is resolaeruoy backward</div>
+    <div id="answer"> <input id="solution" type="text"></div>
+    <button id="next" onclick="next()"> Submit </button>
+  </div>
+</body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{{url_for('static', filename='javascript/firebase.js')}}"></script>
 <script src="{{url_for('static', filename='javascript/common.js')}}"></script>
 <script>
-  var qNo = get_attribute('{{username}}', 'trivia_question');
+var q_no = 0;
+var user_id = -1;
 
-  function next() {
-    var guess = document.getElementById('solution').value;
-    $.ajax({
-      type: "POST",
-      url: "/api/trivia_game",
-      data: {"answer": guess, "question": qNo},
-      success: function(data) {
-        if (data == "Correct!") {
-          // Increase score
-        }
-        // Increment question number
-      },
-    });
-  }
+function load_question() {
+  start_firebase();
+  console.log("starting");
+  firebase.database().ref("users").once("value").then(function(snapshot) {
+    var users = snapshot.val();
+    for (var i = 0; i < users.length; i++) {
+      console.log(users[i]["name"]);
+      if (users[i]["name"] == '{{username}}') {
+        user_id = i;
+        q_no = users[i]['trivia_question'];
+
+        console.log(user_id);
+        console.log(q_no);
+        $.ajax({
+          type: "GET",
+          url: "api/trivia_game",
+          data: {
+            "question": q_no
+          },
+          success: function(data) {
+            document.getElementById("question").innerHTML = q_no + ". " + data
+          }
+        }); 
+      }
+    };
+  });
+}
+
+function next() {
+  var guess = document.getElementById('solution').value;
+  $.ajax({
+    type: "POST",
+    url: "/api/trivia_game",
+    data: {"answer": guess, "question": qNo},
+    success: function(data) {
+      if (data == "Correct!") {
+        // Increase score
+      }
+      // Increment question number
+    },
+  });
+}
 </script>
-</body>
+
 </html>

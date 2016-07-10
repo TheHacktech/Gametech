@@ -46,10 +46,13 @@ def golf():
 
 @app.route('/api/trivia_game', methods=['GET', 'POST'])
 def trivia():
-    if request.method == 'POST':
+    if request.method == 'GET':
+        return TRIVIA_QUESTIONS_LIST.get(request.form["question"], \
+            "No question found")
+    elif request.method == 'POST':
         answer = request.form["answer"]
         questionNum = request.form["question"]
-        if (dictionary.TRIVIA_ANSWERS_LIST[questioNum] == answer):
+        if (dictionary.TRIVIA_ANSWERS_LIST[questionNum] == answer):
             return "Correct!"
         return "Wrong!"
 
