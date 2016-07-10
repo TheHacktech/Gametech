@@ -42,6 +42,24 @@ editor.setTheme("ace/theme/iplastic");
 editor.getSession().setMode("ace/mode/python");
 editor.getSession().setUseWrapMode(true);
 
+$.ajax({
+  type: "GET",
+  url: "/api/code_golf",
+  success: function(data) {
+    data = JSON.parse(data);
+    var dropdownContent = "<select id='qs'>";
+    for (var i = 1; i < Object.keys(data).length+1; i ++) {
+      dropdownContent += "<option value='question" + i.toString() + "'>" +
+      data[i] + "</option>";
+    }
+    dropdownContent += "</select>";
+    console.log(dropdownContent);
+    document.getElementById('challenge-text').innerHTML = dropdownContent;
+  }
+});
+
+
+
 editor.commands.addCommand({
   name: 'myCommand',
   bindKey: {win: 'Ctrl-K',  mac: 'Command-K'},
@@ -50,10 +68,11 @@ editor.commands.addCommand({
 });
 
 function submit_code() {
+  var chosenQ = document.getElementById("qs").selectedIndex + 1;
   $.ajax({
     type: "POST",
     url: "/api/code_golf",
-    data: {"code": editor.getValue()},
+    data: {"code": editor.getValue(), "question": chosenQ},
     success: function(data){
       data = JSON.parse(data);
       var result_box = document.getElementById("confirm-submit");
@@ -65,7 +84,7 @@ function submit_code() {
         post_score("code-golf_game", "{{username}}", points);
         result_box.innerHTML += " and earned " + points + " points!";
       }
-      
+
     },
   });
 }

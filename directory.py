@@ -30,3 +30,13 @@ TRIVIA_ANSWERS_LIST = {
     2 : "10",
     3 : "5"
 }
+
+CODE_GOLF_QUESTIONS_LIST = {
+    "1" : "Write a function to multiply a number by 10",
+    "2" : "Write a function to multiply a number by 5"
+}
+
+CODE_GOLF_ANSWERS_LIST = {
+    "1" : {"inputs": [0, 1, 2, 10], "outputs": [0, 10, 20, 100]},
+    "2" : {"inputs": [0, 1, 2, 10], "outputs": [0, 5, 10, 50]}
+}
