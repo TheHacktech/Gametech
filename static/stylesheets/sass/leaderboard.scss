@@ -109,7 +109,7 @@ p, div {
 }
 
 .tile {
-    flex: 1 0 35%;
+    flex: 1 0 33%;
     margin: 20px;
     perspective: 1000px;
     display: -webkit-box;
@@ -210,6 +210,15 @@ p, div {
             text-transform: uppercase;
             padding: 10px;
             color: $rosegold;
+            @include transition(color .8s ease);
+            @include transition(background-color .8s ease);
+        }
+
+        a:hover {
+            @include transition(color .8s ease);
+            @include transition(background-color .8s ease);
+            color: #fff;
+            background-color:$rosegold;
         }
     }
 }

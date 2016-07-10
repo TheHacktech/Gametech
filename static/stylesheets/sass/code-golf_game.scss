@@ -208,3 +208,15 @@ select:active, select:hover {
 #challenge-text select:disabled ~ .select_arrow {
 	border-top-color: #fff;
 }
+
+.submit-button {
+    @include transition(color .8s ease);
+    @include transition(background-color .8s ease);
+}
+
+.submit-button:hover {
+    @include transition(color .8s ease);
+    @include transition(background-color .8s ease);
+    color: #fff;
+    background-color:$rosegold;
+}

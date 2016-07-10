@@ -145,3 +145,14 @@ p, div {
         margin-top: 10px;
     }
 }
+.submit-button {
+    @include transition(color .8s ease);
+    @include transition(background-color .8s ease);
+}
+
+.submit-button:hover {
+    @include transition(color .8s ease);
+    @include transition(background-color .8s ease);
+    color: #fff;
+    background-color:$rosegold;
+}

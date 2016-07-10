@@ -124,4 +124,30 @@ p, div {
   .infocard p {
     margin-top: 10px; }
 
+.submit-button {
+  -webkit-transition: color 0.8s ease;
+  -moz-transition: color 0.8s ease;
+  -ms-transition: color 0.8s ease;
+  -o-transition: color 0.8s ease;
+  transition: color 0.8s ease;
+  -webkit-transition: background-color 0.8s ease;
+  -moz-transition: background-color 0.8s ease;
+  -ms-transition: background-color 0.8s ease;
+  -o-transition: background-color 0.8s ease;
+  transition: background-color 0.8s ease; }
+
+.submit-button:hover {
+  -webkit-transition: color 0.8s ease;
+  -moz-transition: color 0.8s ease;
+  -ms-transition: color 0.8s ease;
+  -o-transition: color 0.8s ease;
+  transition: color 0.8s ease;
+  -webkit-transition: background-color 0.8s ease;
+  -moz-transition: background-color 0.8s ease;
+  -ms-transition: background-color 0.8s ease;
+  -o-transition: background-color 0.8s ease;
+  transition: background-color 0.8s ease;
+  color: #fff;
+  background-color: #e5cace; }
+
 /*# sourceMappingURL=chameleon_game.css.map */

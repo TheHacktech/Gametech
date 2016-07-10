@@ -83,6 +83,32 @@ input[type=submit] {
   padding: 4px 0px;
   margin-top: 20px; }
 
+input[type=submit] {
+  -webkit-transition: color 0.8s ease;
+  -moz-transition: color 0.8s ease;
+  -ms-transition: color 0.8s ease;
+  -o-transition: color 0.8s ease;
+  transition: color 0.8s ease;
+  -webkit-transition: background-color 0.8s ease;
+  -moz-transition: background-color 0.8s ease;
+  -ms-transition: background-color 0.8s ease;
+  -o-transition: background-color 0.8s ease;
+  transition: background-color 0.8s ease; }
+
+input[type=submit]:hover {
+  -webkit-transition: color 0.8s ease;
+  -moz-transition: color 0.8s ease;
+  -ms-transition: color 0.8s ease;
+  -o-transition: color 0.8s ease;
+  transition: color 0.8s ease;
+  -webkit-transition: background-color 0.8s ease;
+  -moz-transition: background-color 0.8s ease;
+  -ms-transition: background-color 0.8s ease;
+  -o-transition: background-color 0.8s ease;
+  transition: background-color 0.8s ease;
+  color: #fff;
+  background-color: #e5cace; }
+
 input::-webkit-input-placeholder {
   color: #fff !important; }
 
