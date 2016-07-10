@@ -10,8 +10,7 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
-  font-family: "Roboto Condensed", sans-serif; }
+  box-sizing: border-box; }
 
 html, body, .viewport {
   width: 100%;
@@ -26,9 +25,6 @@ body {
   overflow-x: hidden;
   background-color: #e5cace; }
 
-p, div {
-  font-family: "Roboto Condensed", sans-serif; }
-
 .container {
   display: -webkit-box;
   display: -moz-box;
@@ -41,6 +37,7 @@ p, div {
   justify-content: center; }
 
 #instructions {
+  font-family: "Roboto Condensed", sans-serif;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -85,6 +82,7 @@ p, div {
   max-height: 70%; }
 
 #editor {
+  font-family: monospace;
   flex: 8 auto;
   color: #333;
   border: 20px solid #fff;
@@ -101,6 +99,7 @@ p, div {
   transition: background 0.5s linear; }
 
 .submit-button {
+  font-family: "Roboto Condensed", sans-serif;
   margin-top: 80px;
   padding: 10px 40px;
   text-transform: uppercase;
@@ -126,6 +125,7 @@ p, div {
     margin-top: 10px; }
 
 #challenge-text {
+  font-family: "Roboto Condensed", sans-serif;
   position: relative;
   display: inline-block;
   width: 100%;
@@ -136,6 +136,7 @@ select:active, select:hover {
   border: none; }
 
 #challenge-text select {
+  font-family: "Roboto Condensed", sans-serif;
   display: inline-block;
   width: 100%;
   padding: 10px 15px;
