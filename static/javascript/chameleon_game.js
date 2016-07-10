@@ -13,11 +13,3 @@ function random_color() {
   }
   return '#'+c;
 }
-
-function submit_score() {
-    console.log(score);
-    if (score > 0) {
-        document.getElementById("confirm-submit").innerHTML = "Congrats, you get your life back!!";
-    }
-    document.getElementById("confirm-submit").style.display = "block";
-}

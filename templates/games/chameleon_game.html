@@ -42,5 +42,17 @@
     </div>
   </body>
 </html>
-
+<script>
+function submit_score() {
+    post_score("chameleon_game", "{{username}}", score)
+    if (score > 0) {
+        document.getElementById("confirm-submit").innerHTML = "Congrats, you get your life back!!";
+    }
+    document.getElementById("confirm-submit").style.display = "block";
+}
+</script>
 <script src="{{url_for('static', filename='javascript/chameleon_game.js')}}"></script>
+<script src="{{url_for('static', filename='javascript/firebase.js')}}"></script>
+<!--script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script-->
+<script src="{{url_for('static', filename='javascript/common.js')}}"></script>
+

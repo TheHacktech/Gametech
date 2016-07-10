@@ -10,7 +10,7 @@ def index():
 @app.route('/leaderboard')
 def leaderboard(name=None):
     name = request.args["name"]
-    return render_template('leaderboard.html',name=name)
+    return render_template('leaderboard.html', name=name)
 
 @app.route('/games')
 def game():
@@ -38,7 +38,7 @@ def play_game(gamename, username=None):
     username = request.args.get('username')
     if gamename is None or username is None:
         return redirect(url_for('login'))
-    return render_template('games/%s.html' % gamename)
+    return render_template('games/%s.html' % gamename, username=username)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
