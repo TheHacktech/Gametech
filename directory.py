@@ -1,11 +1,17 @@
 GAME_NAME_LIST = {
-    "code_golf_game"  : "Code Golf",
+    "code-golf_game"  : "Code Golf",
     "chameleon_game"  : "Chameleon Game"
 }
 
 GAME_DESCRIPTION_LIST = {
-    "code_golf_game"  : "Solve the challenge in the fewsest number of characters.",
+    "code-golf_game"  : "Solve the challenge in the fewsest number of characters.",
     "chameleon_game"  : "Click the chameleon as many times as you can."
+}
+
+GAME_LINK_LIST = {
+    "code-golf_game"  : "/play/code-golf_game",
+    "chameleon_game"  : "/play/chameleon_game",
+    "trivia_game"     : "/play/trivia_game",
 }
 
 TRIVIA_QUESTIONS_LIST = {
