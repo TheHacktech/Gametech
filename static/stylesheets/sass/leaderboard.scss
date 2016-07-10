@@ -36,6 +36,8 @@ p, div {
     display: flex;
   -webkit-flex-flow: row nowrap;
   flex: 1;
+  max-height: 100%;
+  height: 100%;
   // align-items: center;
   justify-content: center;
 }
@@ -44,7 +46,7 @@ p, div {
     flex: 1 auto;
     margin: 40px;
     background-color: $lighter;
-    padding-top: 40px;
+    padding: 40px 15px;
     color: #fff;
 
     h1 {
@@ -59,7 +61,7 @@ p, div {
                 background-color: $rosegold;
                 color: #fff;
                 padding: 20px;
-                margin: 10px 30px;
+                margin: 10px 5px 10px 30px;
 
                 .place {
                     @include font-size(14px);
@@ -76,7 +78,7 @@ p, div {
         background-color:#fff;
         color: $rosegold;
         padding: 20px;
-        margin: 10px 30px;
+        margin: 10px 5px 10px 30px;
 
         .place {
             @include font-size(14px);
@@ -98,3 +100,6 @@ p, div {
     flex: 9 auto;
     background-color: $rosegold;
 }
+
+.mCS-light.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{ background-color: #fff; }
+.mCS-light.mCSB_scrollTools .mCSB_draggerRail{ background-color: $rosegold; }

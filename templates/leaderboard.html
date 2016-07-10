@@ -2,11 +2,14 @@
   <head>
     <title>Leaderboards</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/leaderboard.css') }}" />
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/leaderboard.css') }}" />
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/jquery.mCustomScrollbar.css') }}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='javascript/jquery.mCustomScrollbar.concat.min.js')}}"></script>
   </head>
   <body onload="load_scores()">
     <div class="container">
-        <div id="leaderboard">
+        <div id="leaderboard" class="mCustomScrollbar" data-mcs-theme="light">
           <h1>Leaderboard</h1><br>
           <div id="bull"></div><br>
           <div id="shit"></div>
@@ -41,4 +44,11 @@
       });
     }
   </script>
+  <script>
+    (function($){
+        $(window).on("load",function(){
+            $("#leaderboard").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
 </html>
