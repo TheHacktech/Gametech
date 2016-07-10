@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Generated with d3-generator.com -->
+<html>
+  <head>
+     <title>Bar Chart</title>
+     <meta http-equiv="X-UA-Compatible" content="IE=9">
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script src="http://d3js.org/d3.v2.min.js"></script>
+    <script>
+function renderChart() {
+
+var data = d3.csv.parse(d3.select('#csv').text());
+var valueLabelWidth = 40; // space reserved for value labels (right)
+var barHeight = 20; // height of one bar
+var barLabelWidth = 100; // space reserved for bar labels
+var barLabelPadding = 5; // padding between bar and bar labels (left)
+var gridLabelHeight = 18; // space reserved for gridline labels
+var gridChartOffset = 3; // space between start of grid and first bar
+var maxBarWidth = 420; // width of the bar with the max value
+
+// accessor functions
+var barLabel = function(d) { return d['Name']; };
+var barValue = function(d) { return parseFloat(d['Population (mill)']); };
+
+// scales
+var yScale = d3.scale.ordinal().domain(d3.range(0, data.length)).rangeBands([0, data.length * barHeight]);
+var y = function(d, i) { return yScale(i); };
+var yText = function(d, i) { return y(d, i) + yScale.rangeBand() / 2; };
+var x = d3.scale.linear().domain([0, d3.max(data, barValue)]).range([0, maxBarWidth]);
+// svg container element
+var chart = d3.select('#chart').append("svg")
+  .attr('width', maxBarWidth + barLabelWidth + valueLabelWidth)
+  .attr('height', gridLabelHeight + gridChartOffset + data.length * barHeight);
+// grid line labels
+var gridContainer = chart.append('g')
+  .attr('transform', 'translate(' + barLabelWidth + ',' + gridLabelHeight + ')');
+gridContainer.selectAll("text").data(x.ticks(10)).enter().append("text")
+  .attr("x", x)
+  .attr("dy", -3)
+  .attr("text-anchor", "middle")
+  .text(String);
+// vertical grid lines
+gridContainer.selectAll("line").data(x.ticks(10)).enter().append("line")
+  .attr("x1", x)
+  .attr("x2", x)
+  .attr("y1", 0)
+  .attr("y2", yScale.rangeExtent()[1] + gridChartOffset)
+  .style("stroke", "#ccc");
+// bar labels
+var labelsContainer = chart.append('g')
+  .attr('transform', 'translate(' + (barLabelWidth - barLabelPadding) + ',' + (gridLabelHeight + gridChartOffset) + ')');
+labelsContainer.selectAll('text').data(data).enter().append('text')
+  .attr('y', yText)
+  .attr('stroke', 'none')
+  .attr('fill', 'black')
+  .attr("dy", ".35em") // vertical-align: middle
+  .attr('text-anchor', 'end')
+  .text(barLabel);
+// bars
+var barsContainer = chart.append('g')
+  .attr('transform', 'translate(' + barLabelWidth + ',' + (gridLabelHeight + gridChartOffset) + ')');
+barsContainer.selectAll("rect").data(data).enter().append("rect")
+  .attr('y', y)
+  .attr('height', yScale.rangeBand())
+  .attr('width', function(d) { return x(barValue(d)); })
+  .attr('stroke', 'white')
+  .attr('fill', 'steelblue');
+// bar value labels
+barsContainer.selectAll("text").data(data).enter().append("text")
+  .attr("x", function(d) { return x(barValue(d)); })
+  .attr("y", yText)
+  .attr("dx", 3) // padding-left
+  .attr("dy", ".35em") // vertical-align: middle
+  .attr("text-anchor", "start") // text-align: right
+  .attr("fill", "black")
+  .attr("stroke", "none")
+  .text(function(d) { return d3.round(barValue(d), 2); });
+// start line
+barsContainer.append("line")
+  .attr("y1", -gridChartOffset)
+  .attr("y2", yScale.rangeExtent()[1] + gridChartOffset)
+  .style("stroke", "#000");
+
+}
+    </script>
+    <script id="csv" type="text/csv">Name,Population (mill)
+Google,31
+Facebook,13
+Uber,10
+Quora,7
+Airbnb,7
+Slack,6
+Apple,5
+Twitter,6
+DoorDash,4
+Nest,5
+Salesforce,3
+Palantir,3
+Amazon,3
+Asana,3
+Cisco,2
+Workday,2
+Yelp,2
+Blend Labs,2
+Pintrest,2
+Sourcegraph,2
+Dentboard,2
+Carbide,2
+Scalable Health Labs,1
+Resarch,1
+Quip,1
+Flipboard,1
+Evie,1
+LearnX,1
+Stripe,1
+Onenigma,1
+Synack,1
+Airware,1
+Betafactor,1
+Ozlo,1
+Sumo Logic,1
+DJI,1
+Tilt,1
+Instant eSporst,1
+Tetherball,1
+TA at Stanford,1
+Visa,1
+Eero,1
+Nextdoor,1
+Vijay Pande's Lab,1
+Foreman Dynamics,1
+Wildfire Technologies,1
+Nutanix,1
+Houzz,1
+Robinhood,1
+Affirm,1
+Addepar,1
+Microsoft,1
+Ritetag,1
+Tribogenics,1
+HealthTap,1
+NASA,1
+Intuit,1
+Meteor,1
+Keysight Technologies,1
+AmniTips,1
+Quantcast,1
+GitHub,1
+Infused Solutions,1
+Own Startup,1
+Databricks,1
+CKM Advisors,1
+Benchling,1
+LinkedIn,1
+MD Anderson Cancer Center,1
+Pagedraw,1
+Photon,1
+Leanplum,1
+Lyft,1
+Emory REU,1
+Patreon,1
+</script>
+    <script>renderChart();</script>
+  </body>
+</html>

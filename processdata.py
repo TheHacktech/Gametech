@@ -29,6 +29,17 @@ def extractGreylock():
         spamreader = list(csv.reader(csvfile, delimiter=',', quotechar='"'))
 
         schools = [row[0].split('(')[0].strip() for row in list(spamreader)[1:] if row[0] != ""]
+
+        replacement = {
+            "stanford" : "Stanford University",
+            "harvard"  : "Harvard University",
+            "upenn"    : "University of Pennsylvania",
+            "mit"      : "Massachusetts Institute of Technology"
+        }
+        for x in range(len(schools)):
+            if schools[x].lower() in replacement.keys():
+                schools[x] = replacement[schools[x].lower()]
+
         yearcount = Counter([row[0].split('(')[-1].split(')')[0].strip() for row in list(spamreader)[1:] if row[0] != ""])
         names = [[row[1].strip(), row[2].strip()] for row in list(spamreader)[1:] if row[1] != ""]
         companies = [row[3].strip() for row in list(spamreader)[1:] if row[3] != ""]
@@ -47,10 +58,13 @@ def toDashboardForm(greydata):
     # Change data to something nice to change it into
     for u in set(greydata[0]):
         helper[u] = {key: 0 for key in range(int(firstyear), int(lastyear) + 1)}
-        
+
     count = Counter(zip(greydata[0], greydata[4]))
     for c in count:
         helper[c[0]][int(c[1])] += count[c]
+
+    count = Counter(greydata[3])
+    print count
 
     # Change data to its final form
     for key, value in helper.iteritems():
@@ -59,7 +73,7 @@ def toDashboardForm(greydata):
         thing['freq'] = value
         graphform.append(thing)
 
-    print graphform
+    #print graphform
     # f = open('compiled_project_data_languages.json', 'w')
     # f.write(json.dumps(graphform))
 
@@ -81,16 +95,3 @@ toDashboardForm(greydata)
 # toCategoryGraphForm(categories, devpost)
 # # toLanguageGraphForm(categories, devpost, languages)
 # # toVennForm(categories, devpost)
-
-
-
-
-
-
-
-
-
-
-
-
-
