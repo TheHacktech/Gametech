@@ -13,7 +13,7 @@ $lighter: #f1e2e4;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: $title-font;
+  // font-family: $title-font;
 }
 
 html, body, .viewport{
@@ -32,7 +32,7 @@ body {
 }
 
 p, div {
-  font-family: $title-font;
+  // font-family: $title-font;
 }
 
 .container {
@@ -49,6 +49,7 @@ p, div {
 }
 
 #instructions {
+    font-family: $title-font;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -100,6 +101,7 @@ p, div {
 }
 
 #editor{
+    font-family: monospace;
     flex: 8 auto;
     color: #333;
     border: 20px solid #fff;
@@ -117,6 +119,7 @@ p, div {
 }
 
 .submit-button {
+    font-family: $title-font;
     margin-top: 80px;
     padding: 10px 40px;
     text-transform: uppercase;
@@ -148,6 +151,7 @@ p, div {
 }
 
 #challenge-text {
+    font-family: $title-font;
 	position: relative;
 	display: inline-block;
 	width: 100%;
@@ -160,6 +164,7 @@ select:active, select:hover {
 }
 
 #challenge-text select {
+    font-family: $title-font;
 	display: inline-block;
 	width: 100%;
 	padding: 10px 15px;
