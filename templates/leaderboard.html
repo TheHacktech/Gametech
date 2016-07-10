@@ -2,16 +2,80 @@
   <head>
     <title>Leaderboards</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/leaderboard.css') }}" />
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/leaderboard.css') }}" />
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/jquery.mCustomScrollbar.css') }}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='javascript/jquery.mCustomScrollbar.concat.min.js')}}"></script>
   </head>
   <body onload="load_scores()">
     <div class="container">
-        <div id="leaderboard">
+        <div id="leaderboard" class="mCustomScrollbar" data-mcs-theme="light">
           <h1>Leaderboard</h1><br>
           <div id="bull"></div><br>
           <div id="shit"></div>
       </div>
-      <div id="filler"></div>
+      <div id="filler">
+          <div class="tile">
+              <div class="flipper">
+        		<div class="front">
+        			<h1> GAME 1 ICON</h1>
+        		</div>
+        		<div class="back">
+        			<h1> GAME 1 DESC</h1>
+        		</div>
+            </div>
+	       </div>
+           <div class="tile">
+               <div class="flipper">
+         		<div class="front">
+         			<!-- front content -->
+         		</div>
+         		<div class="back">
+         			<!-- back content -->
+         		</div>
+             </div>
+ 	       </div>
+           <div class="tile">
+               <div class="flipper">
+         		<div class="front">
+         			<!-- front content -->
+         		</div>
+         		<div class="back">
+         			<!-- back content -->
+         		</div>
+             </div>
+ 	       </div>
+           <div class="tile">
+               <div class="flipper">
+         		<div class="front">
+         			<!-- front content -->
+         		</div>
+         		<div class="back">
+         			<!-- back content -->
+         		</div>
+             </div>
+ 	       </div>
+           <div class="tile">
+               <div class="flipper">
+         		<div class="front">
+         			<!-- front content -->
+         		</div>
+         		<div class="back">
+         			<!-- back content -->
+         		</div>
+             </div>
+ 	       </div>
+           <div class="tile">
+               <div class="flipper">
+         		<div class="front">
+         			<!-- front content -->
+         		</div>
+         		<div class="back">
+         			<!-- back content -->
+         		</div>
+             </div>
+ 	       </div>
+      </div>
     </div>
   </body>
   <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
@@ -31,14 +95,21 @@
         for (var i = 0; i < Math.min(20, users.length); i ++) {
           if (users[i]["name"] == name) {
             score = users[i]["score"]
-            document.getElementById("bull").innerHTML += "<p>" + (i+1).toString() +
-              " You ({{name}}) <span>" + score.toString() + "</span></p>";
+            document.getElementById("bull").innerHTML += '<p><span class="place">' + (i+1).toString() +
+              '</span> You ({{name}}) <span class="score">' + score.toString() + "</span></p>";
           };
           document.getElementById("shit").innerHTML +=
-            "<p>" + (i+1).toString() + " " + users[i]["name"] + " <span>" +
+            '<p><span class="place">' + (i+1).toString() + "</span> " + users[i]["name"] + ' <span class="score">' +
               users[i]["score"].toString() + "</span></p>";
         }
       });
     }
   </script>
+  <script>
+    (function($){
+        $(window).on("load",function(){
+            $("#leaderboard").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
 </html>

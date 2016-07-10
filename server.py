@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, render_template, request, session, abort, url_for
+from flask import Flask, flash, redirect, render_template, request, session, abort, url_for, json
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -18,20 +18,30 @@ def game():
         name = "gamesgamesgames"
     return render_template('games.html')
 
-@app.route('/api/code_golf')
-def golf(username=None):
-    user_code = request.args.get('code')
-    question = "Check if a given positive integer is divisible by 2."
-    #test_cases = {0 : True, 5 : False, 4: True, 1024 : True
-    test_case = 5
+def check(code, inp, outp):
     try:
-
-        print eval(user_code[1:-1])
-        if eval(user_code) == test_case:
-            return "success"
-        return "failure - wrong answer"
+        exec(code)
     except:
-        return "failure - invalid eval"
+        return ('Bad Function!', 0)
+    for test_case in range(len(inp)):
+        try:
+            result = eval('f(' + str(inp[test_case]) + ')')
+            if result != outp[test_case]:
+                return ("Wrong Answer!", 0)
+        except:
+            return ("Eval Error!", 0)
+    return ("You Passed with %d characters!" %(len(code)), len(code))
+
+@app.route('/api/code_golf', methods=['GET', 'POST'])
+def golf():
+    if request.method == 'POST':
+        content = request.form["code"]
+        inp = [1, 2, 3]
+        outp = [10, 20, 30]
+        result, length = check(content, inp, outp)
+        return json.dumps({"result": result, "chars": length})
+    return "no"
+
 
 @app.route('/play/<gamename>')
 def play_game(gamename, username=None):
