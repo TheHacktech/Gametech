@@ -1,4 +1,5 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, url_for, json
+from directory import *
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -43,6 +44,14 @@ def golf():
         return json.dumps({"result": result, "chars": length})
     return "no"
 
+@app.route('/api/trivia_game', methods=['GET', 'POST'])
+def trivia():
+    if request.method == 'POST':
+        answer = request.form["answer"]
+        questionNum = request.form["question"]
+        if (dictionary.TRIVIA_ANSWERS_LIST[questioNum] == answer):
+            return "Correct!"
+        return "Wrong!"
 
 @app.route('/play/<gamename>')
 def play_game(gamename, username=None):
