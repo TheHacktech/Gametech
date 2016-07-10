@@ -3,34 +3,38 @@
   <head>
     <title>Code Golf Challenge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/code-golf_game.css') }}" />
   </head>
 
-<style type="text/css" media="screen">
-  #editor {
-      text-align: left;
-      position: relative;
-      top: 0;
-      left: 0;
-      height: 240px;
-  }
-
-  #challenge-text {
-      margin-top: 10px;
-  }
-</style>
 <body>
+    <div id="instructions">
+        <h1>Code Golf</h1>
+        <div class="infocard">
+            <h3>How to Play</h3>
+            <p>Solve the problem in as few characters as possible!</p>
+        </div>
+        <div class="infocard">
+            <h3>Scoring</h3>
+            <p>The number of characters you use.</p>
+        </div>
+        <div class="infocard">
+            <h3>How to Exit</h3>
+            <p>Simply close the window!</p>
+        </div>
+    </div>
+    <div id="game">
 <div class="game-window">
-  Solve the problem in as few characters as possible!
-  <div id="challenge-text">
-    Write a function f that takes in a number and returns it multiplied by 10.
-  </div>
-  <div id="editor">def f(n):
-  return n
+      <div id="challenge-text">
+        Write a function f that takes in a number and returns it multiplied by 10.
+      </div>
+      <div id="editor">def f(n):
+      return n
+      </div>
   </div>
   <button class="submit-button" onclick="submit_code()">Submit!</button>
   <div id="confirm-submit"> Try again! </div>
-</div>
+  </div>
+
 
 
 
@@ -52,7 +56,7 @@ $.ajax({
       dropdownContent += "<option value='question" + i.toString() + "'>" +
       data[i] + "</option>";
     }
-    dropdownContent += "</select>";
+    dropdownContent += '</select><div class="select-arrow"></div>';
     console.log(dropdownContent);
     document.getElementById('challenge-text').innerHTML = dropdownContent;
   }
@@ -92,6 +96,7 @@ function submit_code() {
 <script src="{{url_for('static', filename='javascript/firebase.js')}}"></script>
 <!--script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script-->
 <script src="{{url_for('static', filename='javascript/common.js')}}"></script>
+
 
 </body>
 </html>
