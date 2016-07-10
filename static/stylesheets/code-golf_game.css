@@ -111,7 +111,8 @@ body {
 
 #confirm-submit {
   margin-top: 30px;
-  display: none; }
+  display: none;
+  font-family: "Roboto Condensed", sans-serif; }
 
 .infocard {
   background-color: #fff;
