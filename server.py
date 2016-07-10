@@ -11,7 +11,7 @@ def index():
 @app.route('/leaderboard')
 def leaderboard(name=None):
     name = request.args["name"]
-    return render_template('leaderboard.html', name=name)
+    return render_template('leaderboard.html', name=name, game_name=directory.GAME_NAME_LIST, game_desc=directory.GAME_DESCRIPTION_LIST, game_link=directory.GAME_LINK_LIST)
 '''
 @app.route('/games')
 def game(name=None):
