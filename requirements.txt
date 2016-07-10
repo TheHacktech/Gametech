@@ -1,4 +1,4 @@
-apt-xapian-index==0.45
+apt-xapian-index==0.44
 apturl===0.4.1ubuntu4
 backports.ssl-match-hostname==3.4.0.2
 BeautifulSoup==3.2.1
