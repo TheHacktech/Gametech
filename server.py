@@ -38,8 +38,9 @@ def check(code, inp, outp):
 def golf():
     if request.method == 'POST':
         content = request.form["code"]
-        inp = [1, 2, 3]
-        outp = [10, 20, 30]
+        question = request.form["question"]
+        inp = directory.CODE_GOLF_ANSWERS_LIST[question]["inputs"]
+        outp = directory.CODE_GOLF_ANSWERS_LIST[question]["outputs"]
         result, length = check(content, inp, outp)
         return json.dumps({"result": result, "chars": length})
     elif request.method == 'GET':
