@@ -1,6 +1,7 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, url_for, json
 import directory
 import re
+import random
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -47,6 +48,16 @@ def golf():
     elif request.method == 'GET':
         return json.dumps(directory.CODE_GOLF_QUESTIONS_LIST)
     return "no"
+
+@app.route('/api/passwordgen', methods=['GET'])
+def password_generation():
+    if request.method == 'GET':
+        pwd = ""
+        pwd += random.choice(directory.COMMON_WORD_LIST_NOUN)
+        pwd += random.choice(directory.COMMON_WORD_LIST_VERB)
+        pwd += random.choice(directory.COMMON_WORD_LIST_NOUN)
+        pwd += random.choice(directory.COMMON_NUMBER_LIST)
+        return pwd
 
 @app.route('/api/trivia_game', methods=['GET', 'POST'])
 def trivia():

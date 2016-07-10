@@ -55,3 +55,7 @@ USER_TO_PASS_LIST = {
     "God" : "password",
     "Fred" : "password"
 }
+
+COMMON_WORD_LIST_NOUN = ["dog", "cat", "frog", "pizza", "pie", "bed"]
+COMMON_WORD_LIST_VERB = ["eat", "slap", "hug", "watch"]
+COMMON_NUMBER_LIST = ["1", "2", "3", "4", "5"]

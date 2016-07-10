@@ -17,11 +17,38 @@
               request.form.username }}"> <br>
              <input id="password" type="password" placeholder="Password" name="password" value="{{
               request.form.password }}"> <br>
+             <input id="newpassword" type="text" placeholder="" name="newpassword" value="">
+             <br>
             <input id="loginbutton" type="submit" value="Login">
+            <input id="registerbutton" onclick="register()" type="reset" value="Register">
+            <input id="createaccount" onclick="create()" type="reset" value="Create Account">
           </form>
           {% if error %}
             <p class="error"><strong>Error:</strong> {{ error }}
           {% endif %}
         </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='javascript/firebase.js')}}"></script>
+    <script src="{{url_for('static', filename='javascript/common.js')}}"></script>
+    <script>
+      function register() {
+        $.ajax({
+          type: "GET",
+          url: "/api/passwordgen",
+          success: function(data){
+            document.getElementById('newpassword').style.display = "block";
+            document.getElementById('newpassword').value = data;
+            document.getElementById('password').style.display = "none";
+            document.getElementById('loginbutton').style.display = "none";
+            document.getElementById('createaccount').style.display = "block";
+            document.getElementById('registerbutton').style.display = "none";
+          }
+        });
+      };
+
+      function create() {
+        create_user(document.getElementById('username').value);
+      };
+    </script>
   </body>
 </html>

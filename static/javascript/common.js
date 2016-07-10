@@ -78,7 +78,7 @@ function post_score(gameid, username, score) {
     };
     var updateObj = {};
     updateObj[gameid] = Math.max(curr_game_score, score);
-    updateObj[score] = curr_total_score + Math.max(Math.max(curr_game_score, score) - 
+    updateObj[score] = curr_total_score + Math.max(Math.max(curr_game_score, score) -
       Math.min(curr_game_score, score), 0)
     if (user_id != -1) {
       firebase.database().ref("users/"+ user_id.toString() + "/").update(updateObj);
@@ -101,4 +101,16 @@ function increase_score(gameid, user_id, score) {
       updateObj);
 
   });
+}
+
+function create_user(username) {
+  start_firebase();
+  var total_users = 0;
+  firebase.database().ref("users").once("value").then(function(snapshot) {
+    var users = snapshot.val();
+    total_users = users.length;
+  };
+  firebase.database().ref('users/').update({
+   name: username,
+ });
 }

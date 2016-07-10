@@ -40,6 +40,14 @@ p, div {
   text-decoration: none;
   z-index: 100; }
 
+#createaccount {
+  display: none;
+}
+
+#newpassword {
+  display: none;
+}
+
 form {
   display: flex;
   flex-flow: column nowrap;
