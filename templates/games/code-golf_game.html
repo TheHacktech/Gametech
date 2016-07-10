@@ -48,7 +48,7 @@ editor.getSession().setUseWrapMode(true);
 
 $.ajax({
   type: "GET",
-  url: "api/code_golf",
+  url: "/api/code_golf",
   success: function(data) {
     data = JSON.parse(data);
     var dropdownContent = "<select id='qs'>";
