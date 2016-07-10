@@ -9,9 +9,11 @@
 <body onload="load_question()">
   <div class="game-window">
     <div id="header">Welcome to Trivia!</div>
-    <div id="question">1. What is resolaeruoy backward</div>
+    <div id="confirm-submit" class="top"> How'd you do? </div>
+    <div id="question">Loading question...</div>
     <div id="answer"> <input id="solution" type="text"></div>
     <button id="next" onclick="next()"> Submit </button>
+    
   </div>
 </body>
 
@@ -32,12 +34,9 @@ function load_question() {
       if (users[i]["name"] == '{{username}}') {
         user_id = i;
         q_no = users[i]['trivia_question'];
-
-        console.log(user_id);
-        console.log(q_no);
         $.ajax({
           type: "GET",
-          url: "api/trivia_game",
+          url: "/api/trivia_game",
           data: {
             "question": q_no
           },
@@ -52,11 +51,18 @@ function load_question() {
 
 function next() {
   var guess = document.getElementById('solution').value;
+  console.log(guess)
+    console.log(q_no)
   $.ajax({
     type: "POST",
     url: "/api/trivia_game",
-    data: {"answer": guess, "question": qNo},
+    
+    data: {"answer": guess, "question": q_no},
     success: function(data) {
+      data = JSON.parse(data);
+      var result_box = document.getElementById("confirm-submit");
+      result_box.style.display = "block";
+      result_box.innerHTML = data["result"];
       if (data == "Correct!") {
         // Increase score
       }
