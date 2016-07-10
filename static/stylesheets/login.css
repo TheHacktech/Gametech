@@ -40,14 +40,6 @@ p, div {
   text-decoration: none;
   z-index: 100; }
 
-#createaccount {
-  display: none;
-}
-
-#newpassword {
-  display: none;
-}
-
 form {
   display: flex;
   flex-flow: column nowrap;
@@ -153,6 +145,16 @@ input[type=reset]:hover {
   transition: background-color 0.8s ease;
   color: #fff;
   background-color: #e5cace; }
+
+#newpassword {
+  margin-top: 10px;
+  border: none; }
+
+#createaccount {
+  display: none; }
+
+#newpassword {
+  display: none; }
 
 input::-webkit-input-placeholder {
   color: #fff !important; }
