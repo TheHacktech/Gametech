@@ -82,12 +82,10 @@
       firebase.database().ref("/").once("value").then(function(snapshot) {
         var name = "{{name}}";
         var snap = snapshot.val();
-        console.log(snap)
         var users = snap["users"].sort(
           function(a, b) {
             return b["score"] - a["score"];
           });
-        console.log(users.length);
         for (var i = 0; i < Math.min(20, users.length); i ++) {
           if (users[i]["name"] == name) {
             score = users[i]["score"]

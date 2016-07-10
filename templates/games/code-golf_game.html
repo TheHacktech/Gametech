@@ -72,7 +72,6 @@ editor.commands.addCommand({
 
 function submit_code() {
   var chosenQ = document.getElementById("qs").selectedIndex + 1;
-  console.log(chosenQ);
   $.ajax({
     type: "POST",
     url: "/api/code_golf",
@@ -85,8 +84,6 @@ function submit_code() {
 
       if (data["chars"] != 0) {
         var points = Math.max(0, 100 - Math.round(data["chars"] / 5));
-        console.log(points);
-        console.log("code_golf"+chosenQ.toString());
         post_score("code_golf"+chosenQ.toString(), "{{username}}", points);
         result_box.innerHTML += " and earned " + points + " points!";
       }

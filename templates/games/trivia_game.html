@@ -26,11 +26,9 @@ var user_id = -1;
 
 function initial_load() {
   start_firebase();
-  console.log("starting");
   firebase.database().ref("users").once("value").then(function(snapshot) {
     var users = snapshot.val();
     for (var i = 0; i < users.length; i++) {
-      console.log(users[i]["name"]);
       if (users[i]["name"] == '{{username}}') {
         user_id = i;
         q_no = users[i]['trivia_question'];
@@ -57,8 +55,7 @@ function next() {
   if (guess == "") {
     return;
   }
-  console.log(guess)
-    console.log(q_no)
+  
   $.ajax({
     type: "POST",
     url: "/api/trivia_game",
