@@ -49,7 +49,7 @@ p, div {
   -webkit-flex-flow: column nowrap;
   height: auto;
   justify-content: center;
-  flex: 1 auto;
+  flex: 1 0 auto;
   margin: 40px;
   padding: 40px 15px;
   color: #fff; }
