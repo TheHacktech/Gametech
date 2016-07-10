@@ -22,13 +22,15 @@ GAME_LINK_LIST = {
 TRIVIA_QUESTIONS_LIST = {
     1 : "What is 4+5",
     2 : "What is 1+9",
-    3 : "What is 1*5"
+    3 : "What is 1*5",
+    4 : "Andrew, or Andrew?"
 }
 
 TRIVIA_ANSWERS_LIST = {
     1 : "9",
     2 : "10",
-    3 : "5"
+    3 : "5",
+    4: "yoonko"
 }
 
 CODE_GOLF_QUESTIONS_LIST = {

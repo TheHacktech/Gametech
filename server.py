@@ -1,5 +1,6 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, url_for, json
 import directory
+import re
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -56,13 +57,16 @@ def trivia():
         else:
             return "No questions left! Check back later for more!"
     elif request.method == 'POST':
-        answer = request.form["answer"]
+        answer = normalize(request.form["answer"])
         questionNum = int(request.form["question"])
 
         if (directory.TRIVIA_ANSWERS_LIST[questionNum] == answer):
             return json.dumps({"result": "Correct!"})
         return json.dumps({"result": "Wrong!"})
     return "pls"
+
+def normalize(string):
+    return re.sub(r'\W+', '', string.lower())
 
 @app.route('/play/<gamename>')
 def play_game(gamename, username=None):

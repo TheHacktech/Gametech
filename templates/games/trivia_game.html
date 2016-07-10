@@ -54,6 +54,9 @@ function load_question(q_no) {
 }
 function next() {
   var guess = document.getElementById('solution').value;
+  if (guess == "") {
+    return;
+  }
   console.log(guess)
     console.log(q_no)
   $.ajax({
@@ -62,7 +65,8 @@ function next() {
     
     data: {"answer": guess, "question": q_no},
     success: function(data) {
-      document.getElementById("question").innerHTML = "Loading question..."
+      document.getElementById("question").innerHTML = "Loading question...";
+      document.getElementById('solution').value = "";
       data = JSON.parse(data);
       var result_box = document.getElementById("confirm-submit");
       result_box.style.display = "block";
