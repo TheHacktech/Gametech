@@ -45,6 +45,10 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/iplastic");
 editor.getSession().setMode("ace/mode/python");
 editor.getSession().setUseWrapMode(true);
+editor.setOptions({
+  fontFamily: "monospace",
+  fontSize: "10pt"
+});
 
 $.ajax({
   type: "GET",
