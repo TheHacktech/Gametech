@@ -63,6 +63,7 @@ function dashboard(id, fData){
 
         //create svg for histogram.
         var hGsvg = d3.select(id).append("svg")
+            .attr("id", "bargraph")
             .attr("width", hGDim.w + hGDim.l + hGDim.r)
             .attr("height", hGDim.h + hGDim.t + hGDim.b + 200).append("g")
             .attr("transform", "translate(" + hGDim.l + "," + hGDim.t + ")");
@@ -150,6 +151,7 @@ function dashboard(id, fData){
 
         // create svg for pie chart.
         var piesvg = d3.select(id).append("svg")
+            .attr("id", "pichart")
             .attr("width", pieDim.w).attr("height", pieDim.h)
             .style("margin-bottom", 100)
             .append("g")

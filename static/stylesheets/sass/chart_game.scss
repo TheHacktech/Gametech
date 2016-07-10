@@ -75,6 +75,7 @@ p, div {
 }
 
 #dashboard {
+    width: 100%;
     padding: 50px;
     flex: 9 auto;
     background-color: $lighter;
@@ -87,6 +88,7 @@ p, div {
   -webkit-flex-flow: row wrap;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .infocard {
@@ -108,13 +110,16 @@ p, div {
 path {  stroke: #fff; }
 path:hover {  opacity:0.9; }
 rect:hover {  fill:blue; }
-.axis {  font: 10px sans-serif; }
-.legend tr{    border-bottom:1px solid $rosegold; }
+.axis {  font: 10px $title-font; }
+.legend tr{
+    border-bottom:1px solid $rosegold;
+padding: 3px;}
 .legend tr:last-child{    border: none }
 
 .x.axis path {  display: none; }
 .legend{
-    margin-bottom:76px;
+    margin-bottom: 0px;
+    margin-right: 50px;
     display:inline-block;
     border-collapse: collapse;
     border-spacing: 0px;
@@ -123,7 +128,7 @@ rect:hover {  fill:blue; }
     padding: 15px;
 }
 .legend td{
-    padding:4px 5px;
+    padding:8px 4px;
     vertical-align:bottom;
 }
 .legendFreq, .legendPerc{
@@ -132,4 +137,17 @@ rect:hover {  fill:blue; }
 }
 svg {
     margin: auto auto;
+}
+
+#bargraph {
+    bottom: 0px;
+    display: inline-block;
+    margin-left: 70px;
+}
+
+#pichart {
+    position: absolute;
+    margin-top: 250px;
+    margin-left: -360px;
+    display: inline-block;
 }
