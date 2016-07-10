@@ -1,48 +1,33 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/chart_game.css') }}" />
 <style>
-
-body{
-    width:1060px;
-    margin:50px auto;
-    background-color:#e5cace;
-}
-path {  stroke: #fff; }
-path:hover {  opacity:0.9; }
-rect:hover {  fill:blue; }
-.axis {  font: 10px sans-serif; }
-.legend tr{    border-bottom:1px solid grey; }
-.legend tr:first-child{    border-top:1px solid grey; }
-
 .axis path,
 .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
-
-.x.axis path {  display: none; }
-.legend{
-    margin-bottom:76px;
-    display:inline-block;
-    border-collapse: collapse;
-    border-spacing: 0px;
-}
-.legend td{
-    padding:4px 5px;
-    vertical-align:bottom;
-}
-.legendFreq, .legendPerc{
-    align:right;
-    width:50px;
-}
-svg {
-    margin: auto auto;
-}
-
 </style>
 <body>
+<div class="container">
+    <div id="instructions">
+    <h1>Charts!</h1>
+    <div class="infocard">
+        <h3>How to Play</h3>
+        <p>Well, it's not exactly a game. Hover over any parts of the graphs :)</p>
+    </div>
+    <div class="infocard">
+        <h3>Scoring</h3>
+        <p>No points are awarded for this activity, but the graphs are pretty!</p>
+    </div>
+    <div class="infocard">
+        <h3>How to Exit</h3>
+        <p>Simply close the window.</p>
+    </div>
+</div>
 <div id='dashboard'>
+</div>
 </div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
