@@ -28,11 +28,12 @@
     bindKey: {win: 'Ctrl-K',  mac: 'Command-K'},
     exec: function(editor) {
       $.ajax({
-        url: "/api/code_golf" + editor.getValue(),
-        context: document.body,
+        type: "POST",
+        url: "/api/code_golf",
+        data: {"code": editor.getValue()},
         success: function(data){
-          alert(data);
-        }
+          console.log(data);
+        },
       });
     },
     readOnly: true
