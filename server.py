@@ -11,7 +11,7 @@ def index():
 @app.route('/leaderboard')
 def leaderboard(name=None):
     name = request.args["name"]
-    return render_template('leaderboard.html', name=name)
+    return render_template('leaderboard.html', name=name, game_name=directory.GAME_NAME_LIST, game_desc=directory.GAME_DESCRIPTION_LIST, game_link=directory.GAME_LINK_LIST)
 '''
 @app.route('/games')
 def game(name=None):
@@ -75,10 +75,11 @@ def play_game(gamename, username=None):
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+        if request.form['username'] in directory.USER_TO_PASS_LIST.keys():
+            if request.form['password'] == directory.USER_TO_PASS_LIST[request.form['username']]:
+                return redirect(url_for('leaderboard', name=request.form['username']))
             error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect(url_for('leaderboard', name=request.form['username']))
+        error = 'Invalid Credentials. Please try again.'
     return render_template('login.html', error=error)
 
 if __name__ == "__main__":

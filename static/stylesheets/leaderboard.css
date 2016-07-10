@@ -88,7 +88,7 @@ p, div {
   -webkit-flex-flow: row wrap; }
 
 .tile {
-  flex: 1 0 25%;
+  flex: 1 0 35%;
   margin: 20px;
   perspective: 1000px;
   display: -webkit-box;
