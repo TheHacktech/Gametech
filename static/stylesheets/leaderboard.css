@@ -45,10 +45,32 @@ p, div {
     font-size: 40px;
     font-size: 2.5rem;
     text-transform: uppercase; }
-  #leaderboard h2 {
-    text-align: center; }
+  #leaderboard #bull p {
+    background-color: #e5cace;
+    color: #fff;
+    padding: 20px;
+    margin: 10px 30px; }
+    #leaderboard #bull p::first-letter {
+      font-size: 14px;
+      font-size: 0.875rem;
+      background-color: #fff;
+      color: #e5cace;
+      padding: 5px 10px;
+      border-radius: 50%;
+      margin-right: 15px; }
   #leaderboard p {
-    margin: 0px 40px 0px 40px; }
+    background-color: #fff;
+    color: #e5cace;
+    padding: 20px;
+    margin: 10px 30px; }
+    #leaderboard p::first-letter {
+      font-size: 14px;
+      font-size: 0.875rem;
+      background-color: #e5cace;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 50%;
+      margin-right: 15px; }
     #leaderboard p span {
       float: right; }
 
