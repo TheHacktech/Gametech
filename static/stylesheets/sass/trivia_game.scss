@@ -183,3 +183,25 @@ color: #fff !important;
 input:-ms-input-placeholder {
 color: #fff  !important;
 }
+
+#back {
+    text-align: center;
+    margin-top: 10px;
+    a {
+        text-decoration: none;
+        padding: 5px 10px;
+        background-color: #fff;
+        color: $rosegold;
+        text-transform: uppercase;
+        letter-spacing: 1.1;
+        @include transition(color .8s ease);
+        @include transition(background-color .8s ease);
+    }
+
+    a:hover {
+        @include transition(color .8s ease);
+        @include transition(background-color .8s ease);
+        color: #fff;
+        background-color:$rosegold;
+    }
+}

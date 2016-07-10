@@ -21,8 +21,9 @@
             </div>
             <div class="infocard">
                 <h3>How to Exit</h3>
-                <p>Simply close the window!</p>
+                <p>Press the back button below to return to the leaderboard.</p>
             </div>
+            <div id="back"><a href="/leaderboard?name={{username}}">Back</a></div>
         </div>
         <div id="game">
       <div class="game-window">
@@ -72,7 +73,7 @@ function next() {
   if (guess == "") {
     return;
   }
-  
+
   $.ajax({
     type: "POST",
     url: "/api/trivia_game",
