@@ -18,10 +18,18 @@
           <div class="tile">
               <div class="flipper">
         		<div class="front">
-        			<h1> GAME 1 ICON</h1>
+        			<img src="../static/images/chameleon.png" />
         		</div>
-        		<div class="back">
-        			<h1> GAME 1 DESC</h1>
+        		<div class="back" class="mCustomScrollbar" data-mcs-theme="light">
+                    <div class="info">
+            			<h1>Chameleon</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Sed pharetra semper velit sit amet rutrum. Nunc vel consequat felis.
+                            Vivamus eget justo ac sem sodales ultricies. Sed mattis mattis malesuada.
+                            Suspendisse potenti. Mauris accumsan pellentesque felis, at pulvinar mauris consectetur ac.
+                            Ut pulvinar ornare aliquet.</p>
+                        <a href="">launch</a>
+                </div>
         		</div>
             </div>
 	       </div>
@@ -109,6 +117,7 @@
     (function($){
         $(window).on("load",function(){
             $("#leaderboard").mCustomScrollbar();
+            $(".back").mCustomScrollbar();
         });
     })(jQuery);
 </script>
