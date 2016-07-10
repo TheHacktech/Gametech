@@ -3,42 +3,34 @@
   <head>
     <title>Where's the chameleon?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/chameleon_game.css') }}" />
   </head>
-  <style>
-  .game-window {
-    text-align: center;
-    width: 640px;
-    margin: 0 auto;
-  }
-
-  #chameleon-game {
-    position: relative;
-    height: 480px;
-    width: 640px;
-    background-color: #32CD32;
-    -webkit-transition: background 0.5s linear;
-    -moz-transition: background 0.5s linear;
-    -ms-transition: background 0.5s linear;
-    -o-transition: background 0.5s linear;
-    transition: background 0.5s linear;
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  #confirm-submit {
-    margin-top: 10px;
-    display: none;
-  }
-  </style>
   <body>
-    <div class="game-window">
-      <div id="chameleon-game" onclick="change_color('chameleon-game')">
-        This is the chameleon. (I know, it's a beauty, eh?) <br>
-        Click to change its colour.
-      </div>
-      <button class="submit-button" onclick="submit_score()">I'm done.</button>
-      <div id="confirm-submit"> WOW you didn't even try. A+++ </div>
+    <div class="container">
+        <div id="instructions">
+            <h1>Chameleon</h1>
+            <div class="infocard">
+                <h3>How to Play</h3>
+                <p>Click on the chameleon to change its color.</p>
+            </div>
+            <div class="infocard">
+                <h3>Scoring</h3>
+                <p>It's a secret. :)</p>
+            </div>
+            <div class="infocard">
+                <h3>How to Exit</h3>
+                <p>Simply close the window!</p>
+            </div>
+        </div>
+        <div id="game">
+            <div class="game-window">
+              <div id="chameleon-game" onclick="change_color('chameleon-game')">
+                This is the chameleon. (I know, it's a beauty, eh?)
+              </div>
+              <button class="submit-button" onclick="submit_score()">I'm done.</button>
+              <div id="confirm-submit"> WOW you didn't even try. A+++ </div>
+            </div>
+        </div>
     </div>
   </body>
 </html>
@@ -55,4 +47,3 @@ function submit_score() {
 <script src="{{url_for('static', filename='javascript/firebase.js')}}"></script>
 <!--script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script-->
 <script src="{{url_for('static', filename='javascript/common.js')}}"></script>
-
