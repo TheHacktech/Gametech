@@ -1,50 +1,124 @@
 <html>
   <head>
-    <title>Flask Intro - login page</title>
+    <title>Leaderboards</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/leaderboard.css') }}" />
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/jquery.mCustomScrollbar.css') }}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='javascript/jquery.mCustomScrollbar.concat.min.js')}}"></script>
   </head>
-  <body>
+  <body onload="load_scores()">
     <div class="container">
-      <h1>Leaderboard</h1>
-      <h2> {{name}} <h2>
-      <br>
-      <div id="bull"></div>
-      <div id="shit"></div>
+        <div id="leaderboard" class="mCustomScrollbar" data-mcs-theme="light">
+          <h1>Leaderboard</h1><br>
+          <div id="bull"></div><br>
+          <div id="shit"></div>
+      </div>
+      <div id="filler">
+          <div class="tile">
+              <div class="flipper">
+        		<div class="front">
+        			<img src="../static/images/chameleon.png" />
+        		</div>
+        		<div class="back" class="mCustomScrollbar" data-mcs-theme="light">
+                    <div class="info">
+            			<h1>Chameleon</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Sed pharetra semper velit sit amet rutrum. Nunc vel consequat felis.
+                            Vivamus eget justo ac sem sodales ultricies. Sed mattis mattis malesuada.
+                            Suspendisse potenti. Mauris accumsan pellentesque felis, at pulvinar mauris consectetur ac.
+                            Ut pulvinar ornare aliquet.</p>
+                        <a href="">launch</a>
+                </div>
+        		</div>
+            </div>
+	       </div>
+           <div class="tile">
+               <div class="flipper">
+         		<div class="front">
+         			<!-- front content -->
+         		</div>
+         		<div class="back">
+         			<!-- back content -->
+         		</div>
+             </div>
+ 	       </div>
+           <div class="tile">
+               <div class="flipper">
+         		<div class="front">
+         			<!-- front content -->
+         		</div>
+         		<div class="back">
+         			<!-- back content -->
+         		</div>
+             </div>
+ 	       </div>
+           <div class="tile">
+               <div class="flipper">
+         		<div class="front">
+         			<!-- front content -->
+         		</div>
+         		<div class="back">
+         			<!-- back content -->
+         		</div>
+             </div>
+ 	       </div>
+           <div class="tile">
+               <div class="flipper">
+         		<div class="front">
+         			<!-- front content -->
+         		</div>
+         		<div class="back">
+         			<!-- back content -->
+         		</div>
+             </div>
+ 	       </div>
+           <div class="tile">
+               <div class="flipper">
+         		<div class="front">
+         			<!-- front content -->
+         		</div>
+         		<div class="back">
+         			<!-- back content -->
+         		</div>
+             </div>
+ 	       </div>
+      </div>
     </div>
   </body>
   <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+  <script src="{{url_for('static', filename='javascript/common.js')}}"></script>
   <script>
-    var config = {
-      apiKey: "AIzaSyDq5GXyq96eg0FsUOfVM4XhH1cBS57m4C8",
-      authDomain: "minigames-15a0f.firebaseapp.com",
-      databaseURL: "https://minigames-15a0f.firebaseio.com",
-      storageBucket: "minigames-15a0f.appspot.com",
-    };
-    firebase.initializeApp(config);
-    firebase.database().ref("/").once("value").then(function(snapshot) {
-      var name = "{{name}}";
-      var snap = snapshot.val();
-      var score = snap.name;
-      var sortable = [];
-      for (var user in snap)
-            sortable.push([user, snap[user]])
-      sortable.sort(
+    function load_scores() {
+      start_firebase();
+      firebase.database().ref("/").once("value").then(function(snapshot) {
+        var name = "{{name}}";
+        var snap = snapshot.val();
+        console.log(snap)
+        var users = snap["users"].sort(
           function(a, b) {
-              return a[1] - b[1]
-          }
-      );
-      var users = sortable[0][1];
-      for (var i = 0; i < Math.min(20, users.length); i ++) {
-        if (users[i]["name"] == name) {
-          score = users[i]["score"]
-          document.getElementById("bull").innerHTML += "<p>" + (i+1).toString() +
-          ": you " + score.toString() + "</p>";
-        };
-        document.getElementById("shit").innerHTML +=
-        "<p>" + (i+1).toString() + ": " + users[i]["name"] + " " + users[i]["score"].toString() + "</p>";
-      };
-
-    });
+            return b["score"] - a["score"];
+          });
+        console.log(users.length);
+        for (var i = 0; i < Math.min(20, users.length); i ++) {
+          if (users[i]["name"] == name) {
+            score = users[i]["score"]
+            document.getElementById("bull").innerHTML += '<p><span class="place">' + (i+1).toString() +
+              '</span> You ({{name}}) <span class="score">' + score.toString() + "</span></p>";
+          };
+          document.getElementById("shit").innerHTML +=
+            '<p><span class="place">' + (i+1).toString() + "</span> " + users[i]["name"] + ' <span class="score">' +
+              users[i]["score"].toString() + "</span></p>";
+        }
+      });
+    }
   </script>
+  <script>
+    (function($){
+        $(window).on("load",function(){
+            $("#leaderboard").mCustomScrollbar();
+            $(".back").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
 </html>

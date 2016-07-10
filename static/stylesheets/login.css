@@ -11,7 +11,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif; }
+  font-family: "Roboto Condensed", sans-serif; }
 
 body {
   min-height: 100vh;
@@ -21,7 +21,7 @@ body {
   background-color: #e5cace; }
 
 p, div {
-  font-family: "Roboto", sans-serif; }
+  font-family: "Roboto Condensed", sans-serif; }
 
 .container {
   display: flex;

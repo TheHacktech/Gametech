@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Code Golf Challenge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+  </head>
+
+<style type="text/css" media="screen">
+  #editor {
+      text-align: left;
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 240px;
+  }
+
+  #challenge-text {
+      margin-top: 10px;
+  }
+</style>
+<body>
+<div class="game-window">
+  Solve the problem in as few characters as possible!
+  <div id="challenge-text">
+    Write a function f that takes in a number and returns it multiplied by 10.
+  </div>
+  <div id="editor">def f(n):
+  return n
+  </div>
+  <button class="submit-button" onclick="submit_code()">Submit!</button>
+  <div id="confirm-submit"> Try again! </div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../../static/javascript/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/iplastic");
+editor.getSession().setMode("ace/mode/python");
+editor.getSession().setUseWrapMode(true);
+
+editor.commands.addCommand({
+  name: 'myCommand',
+  bindKey: {win: 'Ctrl-K',  mac: 'Command-K'},
+  exec: submit_code,
+  readOnly: true
+});
+
+function submit_code() {
+  $.ajax({
+    type: "POST",
+    url: "/api/code_golf",
+    data: {"code": editor.getValue()},
+    success: function(data){
+      data = JSON.parse(data);
+      var result_box = document.getElementById("confirm-submit");
+      result_box.style.display = "block";
+      result_box.innerHTML = data["result"];
+
+      if (data["chars"] != 0) {
+        var points = Math.max(0, 100 - Math.round(data["chars"] / 5));
+        post_score("code-golf_game", "{{username}}", points);
+        result_box.innerHTML += " and earned " + points + " points!";
+      }
+      
+    },
+  });
+}
+</script>
+<script src="{{url_for('static', filename='javascript/firebase.js')}}"></script>
+<!--script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script-->
+<script src="{{url_for('static', filename='javascript/common.js')}}"></script>
+
+</body>
+</html>
