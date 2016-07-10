@@ -31,11 +31,11 @@
         for (var i = 0; i < Math.min(20, users.length); i ++) {
           if (users[i]["name"] == name) {
             score = users[i]["score"]
-            document.getElementById("bull").innerHTML += "<p>" + (i+1).toString() +
-              " You ({{name}}) <span>" + score.toString() + "</span></p>";
+            document.getElementById("bull").innerHTML += '<p><span class="place">' + (i+1).toString() +
+              '</span> You ({{name}}) <span class="score">' + score.toString() + "</span></p>";
           };
           document.getElementById("shit").innerHTML +=
-            "<p>" + (i+1).toString() + " " + users[i]["name"] + " <span>" +
+            '<p><span class="place">' + (i+1).toString() + "</span> " + users[i]["name"] + ' <span class="score">' +
               users[i]["score"].toString() + "</span></p>";
         }
       });

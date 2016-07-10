@@ -61,7 +61,7 @@ p, div {
                 padding: 20px;
                 margin: 10px 30px;
 
-                &::first-letter {
+                .place {
                     @include font-size(14px);
                     background-color: #fff;
                     color: $rosegold;
@@ -78,7 +78,7 @@ p, div {
         padding: 20px;
         margin: 10px 30px;
 
-        &::first-letter {
+        .place {
             @include font-size(14px);
             background-color: $rosegold;
             color: #fff;
@@ -86,7 +86,7 @@ p, div {
             border-radius: 50%;
             margin-right: 15px;
         }
-        span {
+        .score {
             float: right;
         }
     }

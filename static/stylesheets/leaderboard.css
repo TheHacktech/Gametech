@@ -50,7 +50,7 @@ p, div {
     color: #fff;
     padding: 20px;
     margin: 10px 30px; }
-    #leaderboard #bull p::first-letter {
+    #leaderboard #bull p .place {
       font-size: 14px;
       font-size: 0.875rem;
       background-color: #fff;
@@ -63,7 +63,7 @@ p, div {
     color: #e5cace;
     padding: 20px;
     margin: 10px 30px; }
-    #leaderboard p::first-letter {
+    #leaderboard p .place {
       font-size: 14px;
       font-size: 0.875rem;
       background-color: #e5cace;
@@ -71,7 +71,7 @@ p, div {
       padding: 5px 10px;
       border-radius: 50%;
       margin-right: 15px; }
-    #leaderboard p span {
+    #leaderboard p .score {
       float: right; }
 
 #filler {
