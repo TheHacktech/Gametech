@@ -18,17 +18,29 @@ def game():
         name = "gamesgamesgames"
     return render_template('games.html')
 
+def check(code, inp, outp):
+    try:
+        exec(code)
+    except:
+        return ('Bad Function!', 0)
+    for test_case in range(len(inp)):
+        try:
+            result = eval('f(' + str(inp[test_case]) + ')')
+            if result != outp[test_case]:
+                return ("Wrong Answer!", 0)
+        except:
+            return ("Eval Error!", 0)
+    return ("You Passed with %d characters!" %(len(code)), len(code))
+
 @app.route('/api/code_golf', methods=['GET', 'POST'])
 def golf():
     if request.method == 'POST':
         content = request.form["code"]
-        try:
-            result = str(eval(content))
-            return result
-        except:
-            return "failure"
+        inp = [1, 2, 3]
+        outp = [10, 20, 30]
+        result, length = check(content, inp, outp)
+        return json.dumps({"result": result, "chars": length})
     return "no"
-
 
 
 @app.route('/play/<gamename>')
