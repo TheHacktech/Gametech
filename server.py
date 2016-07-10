@@ -5,21 +5,10 @@ import re
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-@app.route('/')
-def index():
-    return 'Index Page'
-
 @app.route('/leaderboard')
 def leaderboard(name=None):
     name = request.args["name"]
     return render_template('leaderboard.html', name=name, game_name=directory.GAME_NAME_LIST, game_desc=directory.GAME_DESCRIPTION_LIST, game_link=directory.GAME_LINK_LIST)
-'''
-@app.route('/games')
-def game(name=None):
-    if name is None:
-        name = "gamesgamesgames"
-    return render_template('games.html')
-'''
 
 def check(code, inp, outp):
     try:
@@ -75,6 +64,7 @@ def play_game(gamename, username=None):
         return redirect(url_for('login'))
     return render_template('games/%s.html' % gamename, username=username)
 
+@app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
