@@ -103,27 +103,4 @@ function increase_score(gameid, user_id, score) {
   });
 }
 
-function create_user(username) {
-  console.log("creating user")
-  start_firebase();
-  var total_users = 0;
-  firebase.database().ref("users").once("value").then(function(snapshot) {
-    var users = snapshot.val();
-    return users.length;
-  }).then(function(total_users) {
-    console.log(total_users);
-    firebase.database().ref('users/' + (total_users).toString() + '/').update({
-      name: username,
-      chameleon_score: 0,
-      code_golf1_score: 0,
-      code_golf2_score: 0,
-      score: 0,
-      teamname: "NewUser",
-      trivia_question: 1,
-      trivia_score: 0
-    });
-    return username;
-  }).then(function(some_user){
-    window.open('http://127.0.0.1:5000/api/movepaths?username=' + some_user,'_self');
-  });
-}
+
