@@ -11,26 +11,27 @@ def index():
 def leaderboard(name=None):
     name = request.args["name"]
     return render_template('leaderboard.html', name=name)
-
+'''
 @app.route('/games')
 def game():
     if name is None:
         name = "gamesgamesgames"
     return render_template('games.html')
+'''
 
 def check(code, inp, outp):
     try:
         exec(code)
     except:
-        return ('Bad Function!', 0)
+        return ('Syntax error! Try again!', 0)
     for test_case in range(len(inp)):
         try:
             result = eval('f(' + str(inp[test_case]) + ')')
             if result != outp[test_case]:
-                return ("Wrong Answer!", 0)
+                return ("Wrong Answer! Try again!", 0)
         except:
-            return ("Eval Error!", 0)
-    return ("You Passed with %d characters!" %(len(code)), len(code))
+            return ("Function error! Try again!", 0)
+    return ("You passed with %d characters" %(len(code)), len(code))
 
 @app.route('/api/code_golf', methods=['GET', 'POST'])
 def golf():
