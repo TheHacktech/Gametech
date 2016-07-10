@@ -1,11 +1,13 @@
 GAME_NAME_LIST = {
     "code-golf_game"  : "Code Golf",
-    "chameleon_game"  : "Chameleon Game"
+    "chameleon_game"  : "Chameleon Game",
+    "trivia_game"     : "Trivia Game"
 }
 
 GAME_DESCRIPTION_LIST = {
     "code-golf_game"  : "Solve the challenge in the fewsest number of characters.",
-    "chameleon_game"  : "Click the chameleon as many times as you can."
+    "chameleon_game"  : "Click the chameleon as many times as you can.",
+    "trivia_game"     : "Solve these trivia questions."
 }
 
 GAME_LINK_LIST = {
