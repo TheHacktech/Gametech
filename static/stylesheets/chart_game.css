@@ -62,6 +62,7 @@ p, div {
     margin-bottom: 30px; }
 
 #dashboard {
+  width: 100%;
   padding: 50px;
   flex: 9 auto;
   background-color: #f1e2e4;
@@ -73,7 +74,8 @@ p, div {
   display: flex;
   -webkit-flex-flow: row wrap;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  text-align: center; }
 
 .infocard {
   background-color: #fff;
@@ -96,10 +98,11 @@ rect:hover {
   fill: blue; }
 
 .axis {
-  font: 10px sans-serif; }
+  font: 10px "Roboto Condensed", sans-serif; }
 
 .legend tr {
-  border-bottom: 1px solid #e5cace; }
+  border-bottom: 1px solid #e5cace;
+  padding: 3px; }
 
 .legend tr:last-child {
   border: none; }
@@ -108,7 +111,8 @@ rect:hover {
   display: none; }
 
 .legend {
-  margin-bottom: 76px;
+  margin-bottom: 0px;
+  margin-right: 50px;
   display: inline-block;
   border-collapse: collapse;
   border-spacing: 0px;
@@ -117,7 +121,7 @@ rect:hover {
   padding: 15px; }
 
 .legend td {
-  padding: 4px 5px;
+  padding: 8px 4px;
   vertical-align: bottom; }
 
 .legendFreq, .legendPerc {
@@ -126,5 +130,16 @@ rect:hover {
 
 svg {
   margin: auto auto; }
+
+#bargraph {
+  bottom: 0px;
+  display: inline-block;
+  margin-left: 70px; }
+
+#pichart {
+  position: absolute;
+  margin-top: 250px;
+  margin-left: -360px;
+  display: inline-block; }
 
 /*# sourceMappingURL=chart_game.css.map */
