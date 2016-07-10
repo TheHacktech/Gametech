@@ -81,7 +81,7 @@ def play_game(gamename, username=None):
         return redirect(url_for('login'))
     return render_template('games/%s.html' % gamename, username=username)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
