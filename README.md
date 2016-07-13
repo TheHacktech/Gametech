@@ -1,2 +1,2 @@
-# Minievents
-Fun minievents for hackathons
+# Gametech
+A platform for playing mini-games.
