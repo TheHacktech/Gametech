@@ -32,11 +32,21 @@
   position: relative;
   top: 5%;
   left: 25%;
+  color: #b76e79;
+  font-size: 200%;
+}
+
+.game-OC{
+  color: #7F8C8D;
+  font-size: 230%;
+  position: relative;
+  top: 104%;
 }
 
 .fui-github:before {
   content: "\e65c";
 }
+
 * {
   padding: 0;
   margin: 0;
@@ -113,6 +123,10 @@ p, div {
   min-height: 70%;
   height: 70%;
   max-height: 70%; }
+  
+#scores {
+  color: #b76e79; 
+  font-size: 125%; }
 
 #chameleon-game {
   flex: 8 auto;

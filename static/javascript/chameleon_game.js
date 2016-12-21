@@ -1,104 +1,19 @@
+// Variables
 var score = 0;
+var BC_colors = ['#18b495','#159d82', '#2fd072', '#26a65b', '#3c9cdd', '#2981bc', '#a05fb9', '#9243ad', '#364d63', '#2d4052', '#ecc113', '#ec9b18', '#e67919', '#cc5200', '#e64533', '#bb392a', '#f0f3f4', '#bac0c4', '#90a1a2', '#80878e'];
+var OC_colors = ['#1abc9c','#16A085', '#2ECC71', '#27AE60', '#3498DB', '#2980B9', '#9B59B6', '#8E44AD', '#34495E', '#2C3E50', '#F1C40F', '#F39C12', '#E67E22', '#D35400', '#E74C3C', '#C0392B', '#ECF0F1', '#BDC3C7', '#95A5A6', '#7F8C8D'];
 
 function change_color(div_id, div_id2) {
 	// Function changes the Octocat color/position and game background and updates score whenever the Octocat is clicked
     document.getElementById("confirm-submit").innerHTML = "Never mind...";
-	rando = Math.random() * 100;
-    document.getElementById(div_id).style.backgroundColor = get_BGcolor(rando);
-	document.getElementsByClassName(div_id2)[1].style.color = get_OCcolor(rando);
+	rando = Math.floor(Math.random() * 100) % 20;
+    document.getElementById(div_id).style.backgroundColor = BC_colors[rando];
+	document.getElementsByClassName(div_id2)[1].style.color = OC_colors[rando];
 	document.getElementsByClassName(div_id2)[1].style.position = "relative";
 	document.getElementsByClassName(div_id2)[1].style.top = random_percent_top();
 	document.getElementsByClassName(div_id2)[1].style.left = random_percent_left();
     score++;
 	document.getElementById('scores').innerHTML = 'Your Current Score: ' + score.toString();
-}
-
-function get_BGcolor(rando){
-	//  Uses input argument (random int between 0 - 100) to choose a corresponding background color. 
-	if (rando <= 5)
-		return '#18b495';
-	else if (rando <= 10)
-		return '#159d82';
-	else if (rando <= 15)
-		return '#2fd072';
-	else if (rando <= 20)
-		return '#26a65b';
-	else if (rando <= 25)
-		return '#3c9cdd';
-	else if (rando <= 30)
-		return '#2981bc';
-	else if (rando <= 35)
-		return '#a05fb9';
-	else if (rando <= 40)
-		return '#9243ad';
-	else if (rando <= 45)
-		return '#364d63';
-	else if (rando <= 50)
-		return '#2d4052';
-	else if (rando <= 55)
-		return '#ecc113';
-	else if (rando <= 60)
-		return '#ec9b18';
-	else if (rando <= 65)
-		return '#e67919';
-	else if (rando <= 70)
-		return '#cc5200';
-	else if (rando <= 75)
-		return '#e64533';
-	else if (rando <= 80)
-		return '#bb392a';
-	else if (rando <= 85)
-		return '#f0f3f4';
-	else if (rando <= 90)
-		return '#bac0c4';
-	else if (rando <= 95)
-		return '#90a1a2';
-	else if (rando <= 100)
-		return '#80878e';
-}
-
-function get_OCcolor(rando){
-	//  Uses input argument (random int between 0 - 100) to choose a corresponding Octocat color. 
-	if (rando <= 5)
-		return '#1abc9c';
-	else if (rando <= 10)
-		return '#1abc9c';
-	else if (rando <= 15)
-		return '#2ECC71';
-	else if (rando <= 20)
-		return '#27AE60';
-	else if (rando <= 25)
-		return '#3498DB';
-	else if (rando <= 30)
-		return '#2980B9';
-	else if (rando <= 35)
-		return '#9B59B6';
-	else if (rando <= 40)
-		return '#8E44AD';
-	else if (rando <= 45)
-		return '#34495E';
-	else if (rando <= 50)
-		return '#2C3E50';
-	else if (rando <= 55)
-		return '#F1C40F';
-	else if (rando <= 60)
-		return '#F39C12';
-	else if (rando <= 65)
-		return '#E67E22';
-	else if (rando <= 70)
-		return '#D35400';
-	else if (rando <= 75)
-		return '#E74C3C';
-	else if (rando <= 80)
-		return '#C0392B';
-	else if (rando <= 85)
-		return '#ECF0F1';
-	else if (rando <= 90)
-		return '#BDC3C7';
-	else if (rando <= 95)
-		return '#95A5A6';
-	else if (rando <= 100)
-		return '#7F8C8D';
 }
 
 function random_percent_left(){
