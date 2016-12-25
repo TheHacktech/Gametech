@@ -42,7 +42,8 @@ TRIVIA_QUESTIONS_LIST = {
     21 : "What is a state located in the east south-central region of the United States?",
     22 : "What is a state located in the southern region of the United States?",
     23 : "What is a state in New England, in the United States?",
-    24 : "What is a state located in the Mid-Atlantic region of the United States, bordering Virginia, West Virginia, and Washington, D.C. to its south and west; Pennsylvania to its north; and Delaware to its east?",
+    24 : "What is a state located in the Mid-Atlantic region of the United States, bordering Virginia, West Virginia, and Washington, D.C. to its south and west; Pennsylvania to its north; "\
+		 "and Delaware to its east?",
     25 : "What is the most populous state in the New England part of the northeastern region of the United States?",
     26 : "What is a state located in the Great Lakes and midwestern regions of the United States?",
     27 : "What is a state in the Midwestern United States?",
@@ -131,14 +132,25 @@ TRIVIA_ANSWERS_LIST = {
 
 CODE_GOLF_QUESTIONS_LIST = {
     "1" : "Write a function to multiply a number by 10",
-    "2" : "Write a function to multiply a number by 5"
+    "2" : "Write a function to multiply a number by 5",
+	"3" : "Write a single line of Python code that will return a newline character.",
+	"4" : "Write a line of Python code which will add 10 to a number.",
+	"5" : "Join a list of strings into a single string, with each string separated from the next in the list by a single space character.",
+	"6" : "Create a list which is equal to the first 5 elements of the input list.",
+	"7" : "Write a boolean expression that tests whether a variable containing a python string has a vowel.",
+	"8" : "Write Python code which, when executed, changes a string with lowercase letters so that it's now uppercase and in reversed order."
 }
 
 CODE_GOLF_ANSWERS_LIST = {
     "1" : {"inputs": [0, 1, 2, 10], "outputs": [0, 10, 20, 100]},
-    "2" : {"inputs": [0, 1, 2, 10], "outputs": [0, 5, 10, 50]}
+    "2" : {"inputs": [0, 1, 2, 10], "outputs": [0, 5, 10, 50]},
+	"3" : {"inputs": ['', '', '', ''], "outputs": ['\n', '\n', '\n', '\n']},
+    "4" : {"inputs": [0, 1, 2, 10], "outputs": [10, 11, 12, 20]},
+    "5" : {"inputs": [['a', 'b', 'c'], ['a b c'],[]], "outputs": ['a b c', 'a b c', '']},
+    "6" : {"inputs": [[0, 1, 2, 3, 4, 5, 6]], "outputs": [[0, 1, 2, 3, 4]]},
+    "7" : {"inputs": ['"ab"', '"ef"', '"ig"', '"op"', '"uv"', '"bfgpv"','""'], "outputs": [True, True, True, True, True, False, False]},
+    "8" : {"inputs": ['""', '"a"', '"abc"'], "outputs": ['', 'A', 'CBA']}
 }
-
 USER_TO_PASS_LIST = {
     "Robert" : "robert",
     "Advith" : "advith",
