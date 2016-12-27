@@ -74,7 +74,11 @@ def trivia():
 def normalize(string):
     return re.sub(r'\W+', '', string.lower())
 
-@app.route('/play/<gamename>')
+@app.route('/test', methods=['GET', 'POST'])
+def yolo():
+	return 'yolo'
+
+@app.route('/test/<gamename>')
 def play_game(gamename, username=None):
     username = request.args.get('username')
     if gamename is None or username is None:
