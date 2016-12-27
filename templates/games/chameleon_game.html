@@ -1,21 +1,23 @@
 <!doctype html>
 <html>
   <head>
-    <title>Gametech - Play - Chameleon</title>
+    <title>Gametech - Play - Octocat-ch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/chameleon_game.css') }}" />
+	<link rel="icon" href="../static/images/octocat.png">
   </head>
   <body>
     <div class="container">
         <div id="instructions">
-            <h1>Chameleon</h1>
+			<div class="display fui-github"></div>
+            <h1>Octocat-ch</h1> 
             <div class="infocard">
                 <h3>How to Play</h3>
-                <p>Click on the chameleon to change its color.</p>
+                <p>Click on the camouflaging Octocat to score!</p>
             </div>
             <div class="infocard">
                 <h3>Scoring</h3>
-                <p>It's a secret. :)</p>
+                <p>Every correct click on the Octocat is worth 1 point.</p>
             </div>
             <div class="infocard">
                 <h3>How to Exit</h3>
@@ -25,21 +27,23 @@
         </div>
         <div id="game">
             <div class="game-window">
-              <div id="chameleon-game" onclick="change_color('chameleon-game')">
-                This is the chameleon. (I know, it's a beauty, eh?)
-              </div>
+			  <span id="scores">Your Current Score: 0</span>
+              <div id="chameleon-game"> 
+				<div class="game-OC fui-github" onclick="change_color('chameleon-game', 'fui-github')"></div>
+			  </div>
             </div>
               <button class="submit-button" onclick="submit_score()">I'm done.</button>
-              <div id="confirm-submit"> WOW you didn't even try. A+++ </div>
+              <div id="confirm-submit"> WOW you didn't even try. A+++. </div>
         </div>
     </div>
   </body>
 </html>
 <script>
 function submit_score() {
+	//submits score when user clicks the I'm Done button
     post_score("chameleon", "{{username}}", score)
     if (score > 0) {
-        document.getElementById("confirm-submit").innerHTML = "Congrats, you get your life back!!";
+        document.getElementById("confirm-submit").innerHTML = "Congrats, you get your life back!";
     }
     document.getElementById("confirm-submit").style.display = "block";
     score = 0;
