@@ -6,6 +6,10 @@ import random
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
+@app.route('/potato')
+def potato():
+    return "HI"
+
 @app.route('/leaderboard')
 def leaderboard(name=None):
     name = request.args["name"]
