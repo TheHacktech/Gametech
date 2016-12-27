@@ -56,20 +56,23 @@ def password_generation():
 
 @app.route('/api/trivia_game', methods=['GET', 'POST'])
 def trivia():
+    # GET pulls the next question in line in TRIVIA_QUESTIONS_LIST
     if request.method == 'GET':
         key = int(request.args.get('question'))
         if key in directory.TRIVIA_QUESTIONS_LIST:
-            return "%d. %s" % (key, directory.TRIVIA_QUESTIONS_LIST[key])
+            return directory.TRIVIA_QUESTIONS_LIST[key]
         else:
             return "No questions left! Check back later for more!"
+    # POST normalizes the user and database answers and compares them
     elif request.method == 'POST':
-        answer = normalize(request.form["answer"])
+        answer = request.form["answer"]
         questionNum = int(request.form["question"])
-
-        if (directory.TRIVIA_ANSWERS_LIST[questionNum] == answer):
+        if (normalize(directory.TRIVIA_ANSWERS_LIST[questionNum]) == \
+            normalize(answer)):
             return json.dumps({"result": "Correct!"})
-        return json.dumps({"result": "Wrong!"})
-    return "pls"
+        return json.dumps({"result": "Wrong! Correct Answer: %s" \
+                           %(directory.TRIVIA_ANSWERS_LIST[questionNum])})
+    return "Wrong request method given."
 
 def normalize(string):
     return re.sub(r'\W+', '', string.lower())
