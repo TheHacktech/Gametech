@@ -19,6 +19,8 @@ GAME_LINK_LIST = {
     "chart_game"      : "/play/chart_game",
 }
 
+# I WANT COMMENTS
+
 TRIVIA_QUESTIONS_LIST = {
     1 : "What is 4+5",
     2 : "What is 1+9",
