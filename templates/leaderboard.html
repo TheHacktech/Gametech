@@ -2,10 +2,10 @@
   <head>
     <title>Leaderboards</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/leaderboard.css') }}" />
-    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/jquery.mCustomScrollbar.css') }}" />
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/Gametech/leaderboard.css') }}" />
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/Gametech/jquery.mCustomScrollbar.css') }}" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="{{url_for('static', filename='javascript/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
   </head>
   <body onload="load_scores()">
     <div class="container">
@@ -18,7 +18,7 @@
           <div class="tile">
               <div class="flipper">
         		<div class="front">
-        			<img src="../static/images/chameleon.png" />
+        			<img src="assets/img/chameleon.png" />
         		</div>
         		<div class="back" class="mCustomScrollbar" data-mcs-theme="light">
                     <div class="info">
@@ -32,7 +32,7 @@
            <div class="tile">
                <div class="flipper">
          		<div class="front">
-         			<img src="../static/images/code-golf.png" />
+         			<img src="assets/img/code-golf.png" />
          		</div>
          		<div class="back">
                     <div class="info">
@@ -46,7 +46,7 @@
            <div class="tile">
                <div class="flipper">
          		<div class="front">
-         			<img src="../static/images/trivia.png" />
+         			<img src="assets/img/trivia.png" />
          		</div>
          		<div class="back">
                     <div class="info">
@@ -60,7 +60,7 @@
            <div class="tile">
                <div class="flipper">
          		<div class="front">
-         			<img src="../static/images/chart.png" />
+         			<img src="assets/img/chart.png" />
          		</div>
          		<div class="back">
                     <div class="info">
@@ -75,7 +75,7 @@
     </div>
   </body>
   <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
-  <script src="{{url_for('static', filename='javascript/common.js')}}"></script>
+  <script src="{{url_for('static', filename='js/common.js')}}"></script>
   <script>
     function load_scores() {
       start_firebase();
