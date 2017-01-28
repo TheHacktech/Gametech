@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/assets/css/register.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Caltech's annual Hackathon!">
+    <title>Hacktech 2017</title>
+  </head>
+  <body>
+    <section id="landing">
+      <div class="contents">
+        <img src="/assets/img/logo.png" />
+        <h1>Hacktech 2017</h1>
+        <h3>March 3-5 @ Pasadena, CA</h3>
+        <h3 style="margin-top: 18px; margin-bottom: -12px;">* indicates a required field.</h3>
+        <div id="form">
+            <form method="post" action="{{ url_for('register') }}" id="registerForm" enctype="multipart/form-data">
+                <div id="formMessage" class="label" style="border: 2px; width: 95%; display: none;"></div>
+                <div><div type="button" id="fnameExplain" class="label" style="border: 2px; width: 40%">* First Name:</div><input type="text" name="fname" id="fname" placeholder="Buford" style="width: 50%"></div>
+                <div><div type="button" id="lnameExplain" class="label" style="border: 2px; width: 40%">* Last Name:</div><input type="text" name="lname" id="lname" placeholder="Frink" style="width: 50%"></div>
+                <div><div type="button" id="emailExplain" class="label" style="border: 2px; width: 40%">* Email:</div><input type="text" name="email" id="email" placeholder="team@hacktech.io" style="width: 50%"></div>
+                <div><div type="button" id="ageExplain" class="label" style="border: 2px; width: 50%"> I will be 18 or older on March 3, 2017:</div><input type="checkbox" class="checkbox" name="age" id="age"></div>
+                <div style="margin: 6px"><div type="button" id="gradeExplain" class="label" style="border: 2px; width: 40%">* Grade:</div><select onchange="checkOther();" id="gradeDrop" name="grade" style="width: 50%">
+                    <option value="default" disabled selected>Select your grade...</option>
+                    <option value="hs">High School</option>      
+                    <option value="ug1">1st Year</option>
+                    <option value="ug2">2nd Year</option>
+                    <option value="ug3">3rd Year</option>
+                    <option value="ug4">4+ Year</option>
+                    <option value="gr">Graduate</option>
+                    <option value="other">Other</option>
+                </select>
+                <input type="text" name="gradeOther" id="formTextGrade" placeholder="Postdoc, Sponsor, etc" style="display: none;"> </div>
+                <div><div type="button" id="schoolExplain" class="label" style="border: 2px; width: 40%">* School/&#8203;University:</div><input type="text" id="school" name="school" placeholder="Caltech" style="width: 50%"></div>
+                <div><div type="button" id="majorExplain" class="label" style="border: 2px; width: 40%">* Major:</div><input type="text" id="major" name="major" placeholder="Basket Weaving" style="width: 50%"></div>
+                <div style="margin-top: 6px;"><div type="button" id="busExplain" class="label" style="border: 2px; width: 40%">* Requested Bus:</div><select name="busorigin" id="formSelectBus" style="width: 50%;">
+                    <option value="default" disabled selected>Select a bus...</option>
+                    <option value="no">No Bus Needed</option>      
+                    <option value="tech">Caltech</option>
+                    <option value="stan">Stanford</option>
+                    <option value="ucb">UC Berkeley</option>      
+                    <option value="uci">UC Irvine</option>
+                    <option value="ucla">UCLA</option>
+                    <option value="ucsd">UC San Diego</option>
+                    <option value="usc">USC</option>
+                    </select></div>
+                <div><div id="webExplain" class="label" style="border: 2px; width: 60%">I'm interested in web development:</div><input type="checkbox" class="checkbox" name="webdev" id="webdev"></div>
+                <div><div type="button" id="mobileExplain" class="label" style="border: 2px; width: 60%">I'm interested in mobile development:</div><input type="checkbox" class="checkbox" name="mobiledev" id="mobiledev"></div>
+                <div><div type="button" id="arvrExplain" class="label" style="border: 2px; width: 60%">I'm interested in augmented/&#8203;virtual reality:</div><input type="checkbox" class="checkbox" name="arvrdev" id="arvrdev"></div>
+                <div><div type="button" id="hardwareExplain" class="label" style="border: 2px; width: 60%">I'm interested in hardware projects:</div><input type="checkbox" class="checkbox" name="hardwaredev" id="hardwaredev"></div>
+                <div><div id="aiExplain" type="button" class="label" style="border: 2px; width: 60%">I'm interested in AI/&#8203;machine learning:</div><input type="checkbox" class="checkbox" name="aidev" id="aidev"></div>
+                <div style="margin-top: 3px;"><div type="button" id="websiteExplain" class="label" style="border: 2px; width: 30%">Personal Website:</div><input type="url" name="website" id="website" style="width: 60%" onclick="personalUpdate('website')" onblur="personalRemove('website')" placeholder="http://www.caltech.edu"></div>
+                <div><div type="button" id="ghExplain" class="label" style="border: 2px; width: 30%">Github Profile:</div><input type="url" name="github" id="github" style="width: 60%" onclick="personalUpdate('github')" onblur="personalRemove('github')" placeholder="http://www.github.com/thehacktech"></div>
+                <div style="margin-bottom: 3px;"><div type="button" id="linkedinExplain" class="label" style="border: 2px; width: 30%">LinkedIn Profile:</div><input type="url" name="linkedin" id="linkedin" style="width: 60%" onclick="personalUpdate('linkedin')" onblur="personalRemove('linkedin')" placeholder="http://www.linkedin.com/company/hacktech"></div>
+                <div style="margin-bottom: 5px;"><div id="resumeExplain" class="label" type="button" style="border: 2px; width: 30%">* Upload your Resume:</div><button type="button" id="resumeUploadBtn" style="width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" onclick="uploadResume()">Click to upload</button>
+                <input type="file" id="resumefileinput" name="resumefileinput" style="display: none" accept=".doc,.docx,.pdf,.txt,.rtf" onchange="updateBtnTxt()">
+                </div>
+
+                <div id="poemExplain" class="longresponse label" style="border: 2px;">Write an acrostic poem based around the word 'ROSE'. *</div>
+                <textarea name="poem" id="poem" rows="6"></textarea>
+                <div id="techExplain" class="longresponse label" style="border: 2px;">What is something you did today that could have been simplified/&#8203;automated/&#8203;made more exciting with technology? *</div>
+                <textarea name="techsimplify" id="techsimplify" rows="6"></textarea>
+                <div id="suggestExplain" class="longresponse label" style="border: 2px;">What are some cool things you’d like to see at Hacktech? These could be mini-events, hardware, or anything really! *</div>
+                <textarea name="hacktechsuggest" id="hacktechsuggest" rows="6"></textarea>
+                <div id="otherExplain" class="longresponse label" style="border: 2px;">List your teammates emails here if you have a team. Otherwise, if you have questions or have anything else you’d like to add, please do so here.</div>
+                <textarea name="othercomment" id="othercomment" rows="6"></textarea>
+                
+                <div><div id="cocExplain" type="button" class="label" style="border: 2px; width: 60%">* I agree to abide by the <a href='https://static.mlh.io/docs/mlh-code-of-conduct.pdf' target='_blank'>MLH Code of Conduct</a>:</div><input type="checkbox" class="checkbox" name="accept_tos" id="accept_tos"></div>
+                <input id="formSubmit" class="btn btn-tech" type="submit" value="Apply">
+            </form>
+      </div>
+    </section>
+    <section id="footer">
+      <div class="contents">
+        <div id="social">
+          <a href="http://twitter.com/theHackTech" target="_blank"><img class="socialicon" src="/assets/img/twitter.png"></a>
+  				<a href="http://facebook.com/theHackTech" target="_blank"><img class="socialicon" src="/assets/img/facebook.png"></a>
+  				<a href="https://www.linkedin.com/company/hacktech" target="_blank"><img class="socialicon" src="/assets/img/linkedin.png"></a>
+          <a href="mailto:team@hacktech.io" target="_blank"><img class="socialicon" src="/assets/img/email.png"></a>
+        </div>
+        ©2016 Hacktech<br/>
+        All other trademarks and logos ® their respective owners.<br />
+        Made by the Hacktech team with ♥
+      </div>
+    </section>
+  </body>
+  <script src="/assets/js/index.js"></script>
+  <script src="/assets/js/register.js"></script>
+</html>
