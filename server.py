@@ -1,4 +1,5 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, url_for, json
+from wtforms import Form, StringField, BooleanField, TextAreaField, validators
 import directory
 import re
 import random
@@ -6,6 +7,41 @@ import random
 app = Flask(__name__, static_folder='static/assets')
 # app = Flask(__name__)
 app.config['DEBUG'] = True
+
+COLUMN_LIMITS = {
+    'fname'     : 64,
+    'lname'     : 64,
+    'email'     : 64,
+    'grade'     : 32,
+    'school'    : 64,
+    'busorigin' : 80,
+    'website'   : 80,
+    'linkedin'  : 80,
+    'resumepath': 120,
+    'major'     : 80
+    }
+
+class RegistrationForm(Form):
+    fname = StringField('First Name', [validators.Length(min=1, max=COLUMN_LIMITS['fname']), validators.DataRequired()])
+    lname = StringField('Last Name', [validators.Length(min=1, max=COLUMN_LIMITS['lname']), validators.DataRequired()])
+    email = StringField('Email', [validators.Length(min=6, max=COLUMN_LIMITS['email']), validators.Email(), validators.DataRequired()])
+    age = BooleanField('Age')
+    grade = StringField('Grade', [validators.Length(max=COLUMN_LIMITS['grade']), validators.DataRequired()])
+    school = StringField('School/University', [validators.Length(max=COLUMN_LIMITS['school']), validators.DataRequired()])
+    major = StringField('Major', [validators.Length(max=COLUMN_LIMITS['major']), validators.DataRequired()])
+    busorigin = StringField('Bus Origin')
+    webdev = BooleanField('Web Development')
+    mobiledev = BooleanField('Mobile Development')
+    arvrdev = BooleanField('AR/VR Development')
+    hardwaredev = BooleanField('Hardware Development')
+    aidev = BooleanField('AI Development')
+    website = StringField('Website', [validators.Length(max=COLUMN_LIMITS['website'])])
+    linkedin = StringField('LinkedIn Profile', [validators.Length(max=COLUMN_LIMITS['linkedin'])])
+    poem = TextAreaField('Question 1: Poem')
+    techsimplify = TextAreaField('Question 2: Simplify Something With Technology')
+    hacktechsuggest = TextAreaField('Question 3: Suggestions for Hacktech')
+    othercomment = TextAreaField('Question 4: Questions/Comments/Concerns')
+    accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
 
 @app.route('/leaderboard')
 def leaderboard(name=None):
