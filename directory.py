@@ -156,7 +156,7 @@ TRIVIA_ANSWERS_LIST = {
     61 : "King Triton",
     62 : "Llama",
     63 : "95",
-    64 : "Andy",
+    64 : "Stinky Pete",
     65 : "8",
     66 : "The Whomping Willow",
     67 : "Hagrid",
