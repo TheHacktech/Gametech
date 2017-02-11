@@ -2,6 +2,7 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 import directory
 import re
 import random
+import multiprocessing
 
 app = Flask(__name__, static_folder='static/assets')
 # app = Flask(__name__)
@@ -19,9 +20,25 @@ def check(code, inp, outp):
         return ('Syntax error! Try again!', 0)
     for test_case in range(len(inp)):
         try:
-            result = eval('f(' + str(inp[test_case]) + ')')
-            if result != outp[test_case]:
-                return ("Wrong Answer! Try again!", 0)
+	    # Creating a child process that can be terminated after a time limit
+	    p = multiprocessing.Process(target=f, name="F", args=(test_case,))
+	    p.start()
+
+	    # Wait a maximum of 5 seconds for foo
+	    # Usage: join([timeout in seconds])
+	    p.join(3)
+
+	    # If thread is active
+	    if p.is_alive():
+		# Terminate function
+		p.terminate()
+		p.join()
+		return ("Function is taking too long! Try again!", 0)
+
+	    result = eval('f(' + str(inp[test_case]) + ')')
+
+	    if result != outp[test_case]:
+		return ("Wrong Answer! Try again!", 0)            
         except:
             return ("Function error! Try again!", 0)
     return ("You passed with %d characters" %(len(code)), len(code))
