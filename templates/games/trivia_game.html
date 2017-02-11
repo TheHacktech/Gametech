@@ -3,7 +3,7 @@
 <head>
   <title>Gametech - Play - Trivia Challenge</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='stylesheets/trivia_game.css') }}" />
+  <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/Gametech/trivia_game.css') }}" />
 </head>
 
 <body onload="initial_load()">
@@ -36,8 +36,8 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="{{url_for('static', filename='javascript/firebase.js')}}"></script>
-<script src="{{url_for('static', filename='javascript/common.js')}}"></script>
+<script src="{{url_for('static', filename='js/firebase.js')}}"></script>
+<script src="{{url_for('static', filename='js/common.js')}}"></script>
 <script>
 var q_no = 0;
 var user_id = -1;

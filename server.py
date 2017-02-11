@@ -1,6 +1,7 @@
 import directory
 import re
 import random
+<<<<<<< HEAD
 import logging
 from logging.handlers import RotatingFileHandler
 import os
@@ -10,9 +11,11 @@ from wtforms import Form, BooleanField, StringField, PasswordField, validators, 
 import datetime, time
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import exc
-
+import multiprocessing
 
 app = Flask(__name__, static_folder='static/assets')
+# app = Flask(__name__)
+
 app.config['DEBUG'] = True
 
 # get the logger working
@@ -191,9 +194,25 @@ def check(code, inp, outp):
         return ('Syntax error! Try again!', 0)
     for test_case in range(len(inp)):
         try:
-            result = eval('f(' + str(inp[test_case]) + ')')
-            if result != outp[test_case]:
-                return ("Wrong Answer! Try again!", 0)
+	    # Creating a child process that can be terminated after a time limit
+	    p = multiprocessing.Process(target=f, name="F", args=(test_case,))
+	    p.start()
+
+	    # Wait a maximum of 5 seconds for foo
+	    # Usage: join([timeout in seconds])
+	    p.join(3)
+
+	    # If thread is active
+	    if p.is_alive():
+		# Terminate function
+		p.terminate()
+		p.join()
+		return ("Function is taking too long! Try again!", 0)
+
+	    result = eval('f(' + str(inp[test_case]) + ')')
+
+	    if result != outp[test_case]:
+		return ("Wrong Answer! Try again!", 0)            
         except:
             return ("Function error! Try again!", 0)
     return ("You passed with %d characters" %(len(code)), len(code))
@@ -257,7 +276,7 @@ def play_game(gamename, username=None):
         return redirect(url_for('login'))
     return render_template('games/%s.html' % gamename, username=username)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/gametech', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -269,5 +288,75 @@ def login():
         error = 'Invalid Credentials. Please try again.'
     return render_template('login.html', error=error)
 
-if __name__ == "__main__":
+@app.route('/')
+def index():
+    return render_template('JoinTechTemplates/index.html')
+
+@app.route('/waiver/')
+def waiver():
+    return render_template('JoinTechTemplates/waiver.html')
+
+@app.route('/apply/', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm(request.form)
+    if request.method == 'POST' and form.validate():
+
+        buses = ["no", "tech", "stan", "ucb", "uci", "ucla", "ucsd", "usc"]
+        if escape(form.busorigin.data) not in buses:
+            return "There was a problem with your registration information.\nPlease check your information and try again."
+
+        # handle the resume
+        resumepath = ''
+        f = None
+        if 'resumefileinput' in request.files:
+            f = request.files['resumefileinput']
+            if f and f.filename != '' and allowed_file(f.filename):
+                filename = secure_filename(f.filename)
+                resumepath = os.path.join(app.config['UPLOAD_FOLDER'], str(int(time.time())) + filename)
+            else:
+                return "There was a problem with your Resume upload. Make sure it is a doc, docx, pdf, txt, or rtf."
+        else:
+            return "There was a problem with your Resume upload. Please check your upload and try again."
+
+        # Insert the form data into the db
+        hacker = Hacker(form.fname.data, form.lname.data, form.email.data.lower(), form.age.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data, datetime.datetime.utcnow(), resumepath, form.major.data)
+
+        # try to catch people applying with the same email multiple times
+        try:
+            db.session.add(hacker)
+            db.session.commit()
+            f.save(resumepath)
+        except exc.IntegrityError:
+            app.logger.info("Application try from prev app email " + str(escape(form.email.data)))
+            return "Stop clicking the Apply button, you've already applied with that email!"
+
+        app.logger.info("Application submitted by " + str(escape(form.email.data)))
+
+        # Now we'll send the email application confirmation
+        subject = "Thanks for Applying to Hacktech 2017!"
+        html = render_template('JoinTechTemplates/Hacktech2017_submitapplication.html')
+        send_email(hacker.email, subject, html, app_log=app.logger)
+
+        return "Thank you for registering, "+escape(form.fname.data)+". We've sent a confirmation link to "+escape(form.email.data)+"."
+    elif request.method == 'POST':
+        return "There was a problem with your registration information.\nPlease check your information and try again."
+    return render_template('JoinTechTemplates/register.html', form=form)
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('JoinTechTemplates/error.html', error_code=404)
+
+@app.errorhandler(403)
+def page_not_found(e):
+    return render_template('JoinTechTemplates/error.html', error_code=403)
+
+@app.errorhandler(410)
+def page_not_found(e):
+    return render_template('JoinTechTemplates/error.html', error_code=410)
+
+if __name__ == '__main__':
     app.run()

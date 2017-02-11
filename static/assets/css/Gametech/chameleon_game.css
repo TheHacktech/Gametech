@@ -4,14 +4,54 @@
 /* breakpoints */
 /* animations and keyframes */
 /* transitions */
+/* taken from http://designmodo.github.io/Flat-UI/*/
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+
+/* imported from free flat UI kit at http://designmodo.github.io/Flat-UI/ for Octocat Icon */
+@font-face {
+  font-family: 'Flat-UI-Icons';
+  src: url('../fonts/glyphicons/flat-ui-icons-regular.eot');
+  src: url('../fonts/glyphicons/flat-ui-icons-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons/flat-ui-icons-regular.woff') format('woff'), url('../fonts/glyphicons/flat-ui-icons-regular.ttf') format('truetype'), url('../fonts/glyphicons/flat-ui-icons-regular.svg#flat-ui-icons-regular') format('svg');
+}
 /* variables */
+
+[class^="fui-"],
+[class*="fui-"] {
+  font-family: 'Flat-UI-Icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.display{
+  position: relative;
+  top: 5%;
+  left: 25%;
+  color: #b76e79;
+  font-size: 200%;
+}
+
+.game-OC{
+  color: #7F8C8D;
+  font-size: 230%;
+  position: relative;
+  top: 104%;
+}
+
+.fui-github:before {
+  content: "\e65c";
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Roboto Condensed", sans-serif; }
+  font-family: "Roboto Condensed",  sans-serif; }
 
 html, body, .viewport {
   width: 100%;
@@ -83,6 +123,10 @@ p, div {
   min-height: 70%;
   height: 70%;
   max-height: 70%; }
+  
+#scores {
+  color: #b76e79; 
+  font-size: 125%; }
 
 #chameleon-game {
   flex: 8 auto;
@@ -92,18 +136,18 @@ p, div {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #32CD32;
-  -webkit-transition: background 0.5s linear;
-  -moz-transition: background 0.5s linear;
-  -ms-transition: background 0.5s linear;
-  -o-transition: background 0.5s linear;
-  transition: background 0.5s linear; }
+  background-color: #80878e;
+  -webkit-transition: background 0s linear;
+  -moz-transition: background 0s linear;
+  -ms-transition: background 0s linear;
+  -o-transition: background 0s linear;
+  transition: background 0s linear; }
 
 .submit-button {
   margin-top: 30px;
   padding: 10px 40px;
   text-transform: uppercase;
-  color: #e5cace;
+  color: #b76e79;
   letter-spacing: 1.1;
   border: none;
   outline: none;
@@ -114,8 +158,9 @@ p, div {
   display: none; }
 
 .infocard {
+  font-size: 120%;
   background-color: #fff;
-  color: #e5cace;
+  color: #b76e79;
   margin: 5px 20px;
   padding: 30px; }
   .infocard h3 {
@@ -125,6 +170,7 @@ p, div {
     margin-top: 10px; }
 
 .submit-button {
+  color: #b76e79;
   -webkit-transition: color 0.8s ease;
   -moz-transition: color 0.8s ease;
   -ms-transition: color 0.8s ease;
@@ -157,7 +203,7 @@ p, div {
     text-decoration: none;
     padding: 5px 10px;
     background-color: #fff;
-    color: #e5cace;
+    color: #b76e79;
     text-transform: uppercase;
     letter-spacing: 1.1;
     -webkit-transition: color 0.8s ease;
