@@ -1,13 +1,13 @@
 GAME_NAME_LIST = {
     "code_golf_game"  : "Code Golf",
-    "chameleon_game"  : "Chameleon Game",
+    "chameleon_game"  : "Octocat-ch",
     "trivia_game"     : "Trivia Game",
     "chart_game"      : "Participant Data",
 }
 
 GAME_DESCRIPTION_LIST = {
     "code_golf_game"  : "Solve the challenge in the fewsest number of characters.",
-    "chameleon_game"  : "Click the chameleon as many times as you can.",
+    "chameleon_game"  : "Click the Octocat as many times as you can.",
     "trivia_game"     : "Solve these trivia questions.",
     "chart_game"      : "This isn't even a game. Bruh. pls.",
 }
